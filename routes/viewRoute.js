@@ -13,6 +13,8 @@ router.get(
   viewController.getArticle,
 );
 
+
+
 //CREATION AND HANDLING OF USERS
 router
   .route("/users/signup")
@@ -21,7 +23,6 @@ router
 router
   .route("/users/login")
   .get(authController.isLoggedIn, viewController.viewLoginPage)
-  .post(authController.login);
 //HANDLING OF ARTICLES
 router.use(authController.protect);
 router.get(
