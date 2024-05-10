@@ -1,0 +1,25 @@
+
+
+.form-group
+	label(for="image") Name 
+	input(type="text", id="name", name="name", required )
+.form-group
+	label(for="image") Photo
+	input(type="text", id="photo", name="photo", required )
+.form-group
+	label(for="title") Email Address
+	input(type="text", id="email", name="email", required, placeholder='you@example.com')
+
+.form-group
+	label(for="role") Roles
+	select(id="category", name="role", required)
+		option(value="admin") Admin
+		option(value="writer") Writer
+.form-group
+	label(for="title") Password 
+	input(type="text", id="password", name="password", required, placeholder = "********")
+.form-group
+	label(for="title") Confirm Password
+	input(type="text", id="passwordConfirm", name="passwordConfirm", required, placeholder = "********")
+
+	button(type="submit") Save

@@ -1,0 +1,15 @@
+extends base
+block content
+	section.Article.flex
+		.contentInnerWrapper.flex
+			.mainContent.flex
+				.containerArticleCollection.flex.flex-row
+					.containerPictureArticle
+					.containerText
+						h1=article.title 
+						p!=article.sanitizedHtml
+					- if( user.role === 'admin')
+						form( action=`/articles/${article.category}/${article.slug}?_method=DELETE`,method='POST' )
+							button(type="submit") Delete
+						a(href=`/protected/edit/${article.slug}`) Edit 
+

@@ -1,0 +1,18 @@
+.form-group
+	label(for="image") Immagine
+	input(type="text", id="imageCover", name="imageCover", required, value=article.imageCover)
+.form-group
+	label(for="title") Titolo
+	input(type="text", id="title", name="title", required, value=article.title)
+.form-group
+	label(for="category") Categoria
+	select(id="category", name="category", required)
+		option(value="literature", selected=article.category==="literature") Letteratura
+		option(value="politics", selected=article.category==="politics") Politica
+		option(value="culture", selected=article.category==="culture") Cultura
+		option(value="technology", selected=article.category==="technology") Tecnologia
+.form-group
+	label(for="article") Scrivi l'articolo
+	textarea(id="article", name="article", required)=article.article
+button(type="submit") Save
+a(href=`/articles/${article.category}/:${article.slug}`)  Delete

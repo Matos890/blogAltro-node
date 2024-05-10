@@ -1,0 +1,7 @@
+extends base
+block content
+	section.mainPageSection.flex
+	.contentInnerWrapper.flex
+		form(action="/users/login", method="POST")
+			include _userLogin
+		

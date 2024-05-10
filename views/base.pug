@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		link(rel="stylesheet", href="/css/index.css")
+		title Document
+	body 
+		.siteWrapper.flex.flex-column 
+			main.website
+				article.articleSections
+				include header		
+				block content
+		include _footer 							

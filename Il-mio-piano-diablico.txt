@@ -1,0 +1,11 @@
+Struttura del blog. 
+
+Intanto vorrei provare a creare una cosa simile a quella del The Guardian. 
+Devo creare secondo me per prima cosa un Api di documenti. Non credo che io abbia bisogno di creare degli user in realtà, però forse è meglio farlo. 
+Cosa devo fare in realtà: caricare degli articoli e formattarli in modo che rientrano dentro una pagina. 
+Il problema è qui che devo scrivere degli articoli, ma vorrei poter modificare le posizioni dei contenuti e come posso raggiungere questo risultato?
+Non saprei.
+Potrei scrivere dei template diversi, potrei mettere delle condizioni si. Ed è questo che farò. Probabilmente per ora.
+Mi chiedo è possibile, è una pratica comune quella di scrivere all'interno di documenti mongodb, anche le classi per il css? 
+Come fare? Come fare?
+
