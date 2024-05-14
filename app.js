@@ -15,6 +15,16 @@ const cors = require("cors");
 
 // Middleware per sicurezza e configurazione
 app.use(
+  cors({
+	  origin: "http://localhost:7000",
+    credentials: true,
+    allowedHeaders: ["authorization", "Content-Type"],
+    exposedHeaders: ["authorization"],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+  }),
+);
+app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
@@ -56,27 +66,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(
-  cors({
-	  origin: "http://localhost:7000",
-    credentials: true,
-    allowedHeaders: ["authorization", "Content-Type"],
-    exposedHeaders: ["authorization"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-  }),
-);
 // Middleware per la gestione delle risorse statiche e le route
-app.use(
-  cors({
-	  origin: "http://localhost:7000",
-    credentials: true,
-    allowedHeaders: ["authorization", "Content-Type"],
-    exposedHeaders: ["authorization"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-  }),
-);
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));

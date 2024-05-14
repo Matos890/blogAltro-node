@@ -15,18 +15,23 @@ const signToken = (id) => {
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user);
 
-  const cookieOption = {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000,
-    ),
+  // Controlla la validità di process.env.JWT_COOKIE_EXPIRES_IN
+  const expiresIn = process.env.JWT_COOKIE_EXPIRES_IN || 7; // Valore predefinito di 7 giorni
+  const expiresAt = new Date(Date.now() + expiresIn * 24 * 60 * 60 * 1000);
 
-    secure: true,
+  const cookieOptions = {
+    expires: expiresAt,
+    secure:true ,
+
     httpOnly: true,
     sameSite: "None",
     partitioned: true,
   };
-  if (process.env.NODE_ENV === "production") cookieOption.secure = true;
-  res.cookie("jwt", token, cookieOption);
+
+  // Imposta il cookie JWT con le opzioni configurate
+  res.cookie("jwt", token, cookieOptions);
+
+  // Invia la risposta al client con lo stato e il token
   res.status(statusCode).json({
     status: "success",
     token,

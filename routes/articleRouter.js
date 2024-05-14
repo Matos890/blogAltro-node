@@ -6,7 +6,10 @@ const router = express.Router();
 router
   .route("/")
   .get(articleController.getAllArticles)
-router.use( authController.protect, authController.isLoggedIn)
+router.use(  authController.isLoggedIn, authController.protect)
+
 router.route("/submit-new-article").post(authController.restrict("writer", "admin"),articleController.createArticle);
 router.delete("/:id", articleController.deleteArticle)
+router.get("/articles/:category/:slug", viewController.getArticle
+)
 module.exports = router
