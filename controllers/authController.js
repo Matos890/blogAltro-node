@@ -22,6 +22,8 @@ const createSendToken = (user, statusCode, res) => {
 
     secure: true,
     httpOnly: true,
+    sameSite: "None",
+    partitioned: true,
   };
   if (process.env.NODE_ENV === "production") cookieOption.secure = true;
   res.cookie("jwt", token, cookieOption);
@@ -71,7 +73,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
-    console.log(req.headers.authorization)
+    console.log(req.headers.authorization);
   } //#TODO: UNDERSTAND
   else if (req.cookies.jwt) {
     token = req.cookies.jwt;
@@ -119,7 +121,7 @@ exports.isLoggedIn = async (req, res, next) => {
         // 2) Verification token
         const decoded = await promisify(jwt.verify)(
           req.cookies.jwt,
-          process.env.JWT_SECRET
+          process.env.JWT_SECRET,
         );
 
         // 3) Check if user still exists

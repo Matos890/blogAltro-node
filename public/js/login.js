@@ -1,4 +1,4 @@
-import axios from 'axios'; 
+import axios from 'https://cdn.skypack.dev/axios'; 
 
 
 export const login = async (email, password) => {
@@ -18,7 +18,7 @@ export const login = async (email, password) => {
       window.setTimeout(() => {
         location.assign("/");
         console.log("evvai");
-      }, 1500);
+      }, 4500);
     }
   } catch (err) {
     console.log("error", err.response.data.message);

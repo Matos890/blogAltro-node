@@ -21,18 +21,9 @@ app.use(
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
         "script-src": ["https://cdn.skypack.dev"],
         "script-src-elem": ["'self'", "https://cdn.skypack.dev"],
+        "connect-src": ["'self'", "*"],
       },
     },
-  }),
-);
-app.use(
-  cors({
-    origin: "http://localhost:7000",
-    credentials: true,
-    allowedHeaders: ["authorization", "Content-Type"],
-    exposedHeaders: ["authorization"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
   }),
 );
 app.use(cookieParser());
@@ -44,18 +35,48 @@ app.use(methodOverride("_method"));
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
-app.use(
-  rateLimit({
-    max: 100,
-    windowMs: 60 * 60 * 1000,
-    message: "Too many requests from this IP, please try again in an hour",
-  }),
-);
+//app.use(
+  //rateLimit({
+    //max: 100,
+    //windowMs: 60 * 60 * 1000,
+    //message: "Too many requests from this IP, please try again in an hour",
+//  }),
+//);
 app.use(xss());
 app.use(mongoSanitize());
 app.use(hpp());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:7000");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 
+app.use(
+  cors({
+	  origin: "http://localhost:7000",
+    credentials: true,
+    allowedHeaders: ["authorization", "Content-Type"],
+    exposedHeaders: ["authorization"],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+  }),
+);
 // Middleware per la gestione delle risorse statiche e le route
+app.use(
+  cors({
+	  origin: "http://localhost:7000",
+    credentials: true,
+    allowedHeaders: ["authorization", "Content-Type"],
+    exposedHeaders: ["authorization"],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+  }),
+);
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));

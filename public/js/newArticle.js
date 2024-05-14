@@ -1,6 +1,6 @@
 import axios from 'https://cdn.skypack.dev/axios'; 
 
-export const submitNewArticleJs = async (title, summary, imageCover, category, article) => {
+export const submitNewArticleJs = async (imageCover,title,category,article,summary) => {
     try {
         // Recupera il token JWT dal cookie
         const token = new URLSearchParams(window.location.hash).get('access_token')
