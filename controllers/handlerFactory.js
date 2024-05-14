@@ -24,7 +24,8 @@ exports.createOne = (Model) =>
   catchAsync(async (req, res) => {
     // console.log(req.body);
     const doc = await Model.create(req.body);
-    res.status(201).json({
+    res.status(201).set('Content-Security-Policy',
+      "connect-src 'self' https://cdnjs.cloudflare.com",).json({
       status: "success",
       data: {
         data: doc,

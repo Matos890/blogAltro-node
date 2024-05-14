@@ -1,5 +1,5 @@
 {
-  "name": "blog Test",
+  "name": "blog-Test",
   "version": "1.0.0",
   "description": "how to setup a blog",
   "main": "app.js",
@@ -7,12 +7,13 @@
     "start": "nodemon server.js",
     "start:prod": "set NODE_ENV=production&&nodemon server.js",
     "debug": "node --inspect server.js",
-    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js" 
+  
   },
   "author": "Mattia",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.8",
+    "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "co": "^4.6.0",
     "cookie-parser": "^1.4.6",
@@ -40,7 +41,9 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
+   
     "nodemon": "^3.1.0",
+    "parcel": "^2.12.0",
     "parcel-bundler": "^1.12.5"
   }
 }

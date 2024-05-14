@@ -6,13 +6,13 @@ const AppError = require("../utilis/appError.js");
 const { default: slugify } = require("slugify");
 
 // ARTICLES PAGES
-
 exports.getOverview = catchAsync(async (req, res) => {
   const articles = await Articles.find();
   res.status(200).render("homepage", {
     title: "Homepage",
     articles,
   });
+  console.log(res.data)
 });
 exports.getArticle = catchAsync(async (req, res, next) => {
   const article = await Articles.findOne({ slug: req.params.slug });
@@ -27,10 +27,10 @@ exports.getArticle = catchAsync(async (req, res, next) => {
 exports.newArticle = (req, res) => {
   res.render("newArticle", { article: new Articles() });
 };
-exports.submitNewArticle = catchAsync(async (req, res) => {
-  const article = await Articles.create(req.body);
-  res.status(200).redirect("/");
-});
+//exports.submitNewArticle = catchAsync(async (req, res) => {
+  //const article = await Articles.create(req.body);
+  //res.status(200).redirect("/");
+//});
 exports.getEditPage = catchAsync(async (req, res, next) => {
   const article = await Articles.findOne({ slug: req.params.slug });
   if (!article) {

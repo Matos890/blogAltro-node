@@ -1,18 +1,21 @@
 .form-group
-	label(for="image") Immagine
-	input(type="text", id="imageCover", name="imageCover", required, value=article.imageCover)
+	label(for="imageCover") Immagine
+	input(type="text", id="imageCover", name="imageCover" )
 .form-group
 	label(for="title") Titolo
-	input(type="text", id="title", name="title", required, value=article.title)
+	input(type="text", id="title", name="title", required)
 .form-group
 	label(for="category") Categoria
 	select(id="category", name="category", required)
-		option(value="literature", selected=article.category==="literature") Letteratura
-		option(value="politics", selected=article.category==="politics") Politica
-		option(value="culture", selected=article.category==="culture") Cultura
-		option(value="technology", selected=article.category==="technology") Tecnologia
+		option(value="literature", selected) Letteratura
+		option(value="politics", selected) Politica
+		option(value="culture", selected) Cultura
+		option(value="technology", selected) Tecnologia
 .form-group
 	label(for="article") Scrivi l'articolo
-	textarea(id="article", name="article", required)=article.article
+	textarea(id="article", name="article", required)
+.form-group
+	label(for="summary") Scrivi un riassunto 
+	textarea(id="summary", name="summary", required)
 button(type="submit") Save
 a(href=`/articles/${article.category}/:${article.slug}`)  Delete

@@ -2,6 +2,7 @@ const app = require("./app");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config({ path: "./config.env" });
 const DB = process.env.DATABASE;
+const axios = require('axios')
 const methodOverride= require('method-override')
 mongoose
   .connect(DB, {
@@ -16,7 +17,7 @@ mongoose
   });
 
 
-const port = 3000;
+const port = 7000;
 app.listen(port, () => {
   console.log(`app running on port ${port}`);
 }) 

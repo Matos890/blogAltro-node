@@ -13,8 +13,6 @@ router.get(
   viewController.getArticle,
 );
 
-
-
 //CREATION AND HANDLING OF USERS
 router
   .route("/users/signup")
@@ -22,19 +20,19 @@ router
   .post(authController.signup);
 router
   .route("/users/login")
-  .get(authController.isLoggedIn, viewController.viewLoginPage)
+  .get(authController.isLoggedIn, viewController.viewLoginPage);
 //HANDLING OF ARTICLES
-router.use(authController.protect);
+router.use(authController.isLoggedIn)
 router.get(
   "/protected/new",
   authController.restrict("admin", "writer"),
   viewController.newArticle,
 );
-router.post("/protected/submit-new-article", viewController.submitNewArticle);
+router.use(authController.isLoggedIn)
 router.get(
   "/protected/edit/:slug",
-  authController.restrict("admin"),
   viewController.getEditPage,
+	
 );
 router.patch("/protected/edit/:slug", viewController.editArticle);
 router.delete(
