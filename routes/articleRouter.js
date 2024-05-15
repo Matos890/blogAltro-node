@@ -13,5 +13,5 @@ router.delete("/:id", articleController.deleteArticle)
 router.get("/articles/:category/:slug", viewController.getArticle
 
 )
-router.patch("/edit/:id",  articleController.updateArticle)
+router.patch("/edit/:slug",  articleController.updateArticle)
 module.exports = router

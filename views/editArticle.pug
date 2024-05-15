@@ -1,9 +1,9 @@
-
 extends base
+
+
 block content
-	section.mainPageSection.flex
-		.contentInnerWrapper.flex
-		
-			form( action=`/protected/edit/${article.slug}?_method=PATCH`,method='POST' )
-	
-				include _form_field-edit
+  section.mainPageSection.flex
+    .contentInnerWrapper.flex
+      form.editArticle
+        include _form_field-edit
+

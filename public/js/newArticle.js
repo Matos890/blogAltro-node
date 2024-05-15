@@ -1,4 +1,5 @@
 import axios from 'https://cdn.skypack.dev/axios'; 
+axios.defaults.withCredentials =true;
 
 export const submitNewArticleJs = async (imageCover,title,category,article,summary) => {
     try {
@@ -6,7 +7,7 @@ export const submitNewArticleJs = async (imageCover,title,category,article,summa
         const token = new URLSearchParams(window.location.hash).get('access_token')
         const res = await axios({
             method: "POST",
-            url: "http://[::1]:7000/api/v1/articles/submit-new-article",
+            url: "http://localhost:7000/api/v1/articles/submit-new-article",
             data: {
                 title,
                 summary,

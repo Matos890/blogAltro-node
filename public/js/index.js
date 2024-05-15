@@ -1,7 +1,7 @@
 
 import { login, logout } from './login.js';
 import {submitNewArticleJs} from './newArticle.js'
-
+import {editPage} from './editArticle.js'
 const loginForm = document.querySelector('.form--login');
 const logoutButton = document.querySelector('.logoutButton')
 const newArticleForm = document.getElementById('newArticle');
@@ -33,3 +33,16 @@ newArticleForm.addEventListener('submit', e=>{
 })
  if(logoutButton)
 	logoutButton.addEventListener("click", logout)
+
+if(editArticle)
+	editArticle.addEventListener('submit', e=>{
+		e.preventDefault()
+		imageCover = imageCover.value
+		title = title.value;
+		category = category.value;
+		article = article.value;
+		summary = summary.value;
+		editPage(imageCover,title,category,article,summary)
+		console.log('eddai')
+	})
+	
