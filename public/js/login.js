@@ -25,3 +25,22 @@ export const login = async (email, password) => {
     console.log("error", err.response.data.message);
   }
 };
+export const logout = async()=>{
+try {
+  const res = await axios({
+    method:'GET',
+    url: "http://localhost:7000/api/v1/users/logout",
+    headers:{
+      'Content-Type':null,
+    }
+  })
+    if (res.data.status === "success") {
+      window.setTimeout(() => {
+        location.reload(true);
+        console.log("evvai");
+      }, 4500);
+    }
+  } catch (err) {
+    console.log("error", err.response);
+  }
+}

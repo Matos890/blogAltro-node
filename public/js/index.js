@@ -1,9 +1,11 @@
 
-import { login } from './login.js';
+import { login, logout } from './login.js';
 import {submitNewArticleJs} from './newArticle.js'
 
 const loginForm = document.querySelector('.form--login');
+const logoutButton = document.querySelector('.logoutButton')
 const newArticleForm = document.getElementById('newArticle');
+const editArticle = document.querySelector('.editArticle');
 	let title = document.getElementById('title');
 	let summary = document.getElementById('summary');
 	let imageCover = document.getElementById('imageCover');
@@ -29,3 +31,5 @@ newArticleForm.addEventListener('submit', e=>{
 
 
 })
+ if(logoutButton)
+	logoutButton.addEventListener("click", logout)

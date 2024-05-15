@@ -14,6 +14,16 @@ const rateLimit = require("express-rate-limit");
 const cors = require("cors");
 
 // Middleware per sicurezza e configurazione
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:7000");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+  );
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 app.use(
   cors({
 	  origin: "http://localhost:7000",
@@ -55,16 +65,6 @@ if (process.env.NODE_ENV === "development") {
 app.use(xss());
 app.use(mongoSanitize());
 app.use(hpp());
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:7000");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
 
 // Middleware per la gestione delle risorse statiche e le route
 app.set("view engine", "pug");
