@@ -39,7 +39,7 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["https://cdn.skypack.dev"],
+        "script-src": ["'self'","https://cdn.skypack.dev"],
         "script-src-elem": ["'self'", "https://cdn.skypack.dev"],
         "connect-src": ["'self'", "*"],
       },

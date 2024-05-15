@@ -9,7 +9,7 @@ router
 router.use(  authController.isLoggedIn, authController.protect)
 
 router.route("/submit-new-article").post(authController.restrict("writer", "admin"),articleController.createArticle);
-router.delete("/:id", articleController.deleteArticle)
+router.delete("/:slug", articleController.deleteArticle)
 router.get("/articles/:category/:slug", viewController.getArticle
 
 )
