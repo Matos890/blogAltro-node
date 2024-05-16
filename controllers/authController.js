@@ -5,7 +5,7 @@ const User = require("./../models/userModel");
 
 const AppError = require("../utilis/appError.js");
 const catchAsync = require("../utilis/catchAsync.js");
-const sendEmail = require('../utilis/email.js')
+const sendEmail = require("../utilis/email.js");
 
 ///////////////                    ///////////////
 /////////////////////// TOKEN MANIPULATION ///////////////////////
@@ -235,5 +235,24 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.passwordResetToken = undefined;
   user.passwordResetExpire = undefined;
   await user.save();
+  createSendToken(user, 200, res);
+});
+/////UPDATE PASSWORD
+//
+exports.updatePassword = catchAsync(async (req, res, next) => {
+  //1) get user from collection
+  console.log(req.user.id);
+
+  const user = await User.findById(req.user.id).select("+password");
+  //2)check if posted password is correct
+  if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {
+    return next(new AppError("your current password is not valid", 400));
+  }
+  //3) update password
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  await user.save();
+  //user.update does not work
+  //4)log in
   createSendToken(user, 200, res);
 });

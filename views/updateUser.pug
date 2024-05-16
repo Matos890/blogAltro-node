@@ -1,0 +1,27 @@
+
+extends base
+block content
+	section.mainPageSection.flex
+	.contentInnerWrapper.flex
+		.login-form
+			h2.heading-secondary.ma-bt-lg Update your account
+			form.form.updateUser
+				.form-group
+					label(for="image") Name 
+					input(type="text", id="nameUpdate", name="name", required )
+				.form-group
+					label(for="title") Email Address
+					input(type="text", id="emailUpdate", name="email", required, placeholder='you@example.com')
+				button.btn.btn--green Update 
+			h2 Update your password
+			form.form.updatePassword
+				.form__group.ma-bt-md
+				label.form__label(for='passwordCurrent') Current Password
+				input#passwordCurrent.form__input(type='password', placeholder='••••••••', required, minlength='8')
+				.form__group.ma-bt-md
+				label.form__label(for='passwordNew') new Password
+				input#passwordNew.form__input(type='password', placeholder='••••••••', required, minlength='8')
+				.form__group.ma-bt-md
+				label.form__label(for='passwordNewConfirm') Confirm New Password
+				input#passwordNewConfirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+				button.btn.btn--green Reset Password 

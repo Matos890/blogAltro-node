@@ -35,6 +35,11 @@ if(req.params.token)
 		title:'reset your password'
 	})
 })
+exports.getUpdateUser = catchAsync(async (req,res, next) =>{
+	res.status(200).render('updateUser', {
+		title:'update user'
+	})
+})
 exports.newArticle = (req, res) => {
   res.render("newArticle", { article: new Articles() });
 };

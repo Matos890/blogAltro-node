@@ -28,6 +28,7 @@ router.get(
   authController.restrict("admin", "writer"),
   viewController.newArticle,
 );
+router.get('/protected/updateUser',viewController.getUpdateUser)
 router.use(authController.isLoggedIn)
 router.get(
   "/protected/edit/:slug",

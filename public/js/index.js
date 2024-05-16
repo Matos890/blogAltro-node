@@ -2,7 +2,7 @@
 ///////////////                    ///////////////
 /////////////////////// IMPORTS ///////////////////////
 //////////////                    ///////////////
-import { login, logout, forgotPassword, resetPassword } from "./login.js";
+import { login, logout, forgotPassword, resetPassword,updateUser, updatePassword } from "./login.js";
 import { submitNewArticleJs } from "./newArticle.js";
 import { editPage } from "./editArticle.js";
 import { deleteThisArticle } from "./deleteArticle.js";
@@ -15,8 +15,10 @@ const logoutButton = document.querySelector(".logoutButton");
 const newArticleForm = document.getElementById("newArticle");
 const deleteArticle = document.querySelector(".deleteArticle");
 const editArticle = document.querySelector(".editArticle");
-const forgotPasswordbtn = document.querySelector('.forgotPassword')
-const resetPasswordform = document.querySelector('.resetPasswordForm')
+const forgotPasswordbtn = document.querySelector('.forgotPassword');
+const resetPasswordform = document.querySelector('.resetPasswordForm');
+const updateUserForm = document.querySelector('.updateUser');
+const updatePasswordForm = document.querySelector('.updatePassword')
 let title = document.getElementById("title");
 let summary = document.getElementById("summary");
 let imageCover = document.getElementById("imageCover");
@@ -78,4 +80,21 @@ if(resetPasswordform)
 		const passwordReset = document.getElementById("passwordReset").value;
 		const passwordConfirmReset = document.getElementById('passwordConfirmReset').value;
 		resetPassword(passwordReset, passwordConfirmReset)
+	})
+/////UPDATE USER
+if(updateUserForm)
+	updateUserForm.addEventListener('submit', (e)=>{
+		e.preventDefault();
+		const nameUpdate = document.getElementById("nameUpdate").value;
+		const emailUpdate = document.getElementById("emailUpdate").value;
+		updateUser(nameUpdate, emailUpdate)
+	})
+if(updatePasswordForm)
+	updatePasswordForm.addEventListener('submit', (e) =>{
+		e.preventDefault();
+		const currentPassword = document.getElementById("passwordCurrent").value;
+		const passwordNew = document.getElementById("passwordNew").value;
+		const passwordNewConfirm = document.getElementById("passwordNewConfirm").value;
+		console.log('ciao')
+		updatePassword(currentPassword, passwordNew, passwordNewConfirm);
 	})
