@@ -24,6 +24,17 @@ exports.getArticle = catchAsync(async (req, res, next) => {
     article,
   });
 });
+exports.getPasswordForgot = catchAsync(async (req,res,next)=>{
+	res.status(200).render('forgotPassword', {
+		title:'forgot your password'
+	})
+})
+exports.getResetPassword = catchAsync(async (req,res,next)=>{
+if(req.params.token)
+	res.status(200).render('resetPassword', {
+		title:'reset your password'
+	})
+})
 exports.newArticle = (req, res) => {
   res.render("newArticle", { article: new Articles() });
 };

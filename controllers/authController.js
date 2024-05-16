@@ -5,8 +5,11 @@ const User = require("./../models/userModel");
 
 const AppError = require("../utilis/appError.js");
 const catchAsync = require("../utilis/catchAsync.js");
+const sendEmail = require('../utilis/email.js')
 
-//TOKEN CREATION//
+///////////////                    ///////////////
+/////////////////////// TOKEN MANIPULATION ///////////////////////
+//////////////                    ///////////////
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
@@ -21,7 +24,7 @@ const createSendToken = (user, statusCode, res) => {
 
   const cookieOptions = {
     expires: expiresAt,
-    secure:true ,
+    secure: true,
 
     httpOnly: true,
     sameSite: "None",
@@ -40,9 +43,9 @@ const createSendToken = (user, statusCode, res) => {
     },
   });
 };
-/// USER ACTIONS
-//
-//  SIGNUP
+///////////////              ///////////////
+/////////////////////// USER ACTIONS ///////////////////////
+//////////////              ///////////////
 exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create({
     name: req.body.name,
@@ -70,16 +73,21 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 exports.logout = (req, res) => {
-  res.cookie('jwt', 'loggedout', {
+  res.cookie("jwt", "loggedout", {
     expires: new Date(Date.now() + 10 * 1000),
-    secure:true ,
+    secure: true,
 
     httpOnly: true,
     sameSite: "None",
     partitioned: true,
   });
-  res.status(200).json({ status: 'success' });
+  res.status(200).json({ status: "success" });
 };
+
+///////////////                  ///////////////
+/////////////////////// ROUTE PROTECTION ///////////////////////
+//////////////                  ///////////////
+
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check of it's there
   let token;
@@ -168,3 +176,64 @@ exports.restrict = (...roles) => {
     next();
   };
 };
+///////////////                 ///////////////
+/////////////////////// FORGOT PASSWORD ///////////////////////
+//////////////                 ///////////////
+exports.forgotPassword = catchAsync(async (req, res, next) => {
+  //1)get user based on posted email
+  const user = await User.findOne({
+    email: req.body.email,
+  });
+  if (!user) {
+    return new new AppError("there is no user with this email", 404)();
+  }
+  //2)generate the random reset token
+  const resetToken = user.createPasswordResetToken();
+  await user.save({
+    validateBeforeSave: false,
+  });
+  //3) send it to user's email
+  const resetURL = `${req.protocol}://${req.get(
+    "host",
+  )}/api/v1/users/resetPassword/${resetToken}`;
+
+  const message = `forgot your password? submit new password to ${resetURL}.\n if you did not forget the password, please ignore this email`;
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: `this email expires in 10 mins`,
+      message,
+    });
+    res.status(200).json({
+      status: "success",
+      message: "Token sent via email",
+    });
+  } catch (err) {
+    console.log("errore mail", err);
+    user.passwordResetToken = undefined;
+    user.passwordResetExpire = undefined;
+    await user.save({
+      validateBeforeSave: false,
+    });
+    return next(new AppError("there was an error sending the email", 500));
+  }
+});
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
+  const user = await User.findOne({
+    passwordResetToken: hashedToken,
+    passwordResetExpire: { $gt: Date.now() },
+  });
+  if (!user) {
+    return next(new AppError("token is invalid", 400));
+  }
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpire = undefined;
+  await user.save();
+  createSendToken(user, 200, res);
+});

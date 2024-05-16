@@ -2,6 +2,10 @@ const crypto = require("crypto");
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+
+///////////////            ///////////////
+/////////////////////// USER MODEL ///////////////////////
+//////////////            ///////////////
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -13,7 +17,8 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["admin", "writer"],
+      enum: ["user", "admin", "writer"],
+      default: "user",
     },
     email: {
       type: String,
@@ -51,6 +56,11 @@ const userSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   },
 );
+
+///////////////              ///////////////
+/////////////////////// USER SCHEMAS ///////////////////////
+//////////////              ///////////////
+
 userSchema.pre("save", async function (next) {
   //run if password modified
   if (!this.isModified("password")) return next();
@@ -74,13 +84,25 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
   if (this.passwordChangeAt) {
     const changedTimeStamp = parseInt(
       this.passwordChangeAt.getTime() / 1000,
-      10
+      10,
     );
     console.log(changedTimeStamp, JWTTimestamp);
     //password changed!
     return JWTTimestamp < changedTimeStamp;
   }
   return false;
+};
+userSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString("hex");
+  this.passwordResetToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+  console.log("ciao", { resetToken }, this.passwordResetToken);
+  // Difference between your current time and UTC + 10min
+
+  this.passwordResetExpire = Date.now() + 10 * 60 * 1000;
+  return resetToken;
 };
 const Users = mongoose.model("Users", userSchema);
 module.exports = Users;
