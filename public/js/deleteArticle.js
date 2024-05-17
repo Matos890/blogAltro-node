@@ -1,4 +1,4 @@
-import axios from "https://cdn.skypack.dev/axios";
+import axios from "axios";
 
 axios.defaults.withCredentials = true;
 const thisUrl = window.location.href;

@@ -25,26 +25,9 @@ app.use((req, res, next) => {
   next();
 });
 app.use(
-  cors({
-    origin: "http://localhost:7000",
-    credentials: true,
-    allowedHeaders: ["authorization", "Content-Type"],
-    exposedHeaders: ["authorization"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-  }),
-);
-app.use(
   helmet({
-    contentSecurityPolicy: {
-      directives: {
-        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["'self'", "https://cdn.skypack.dev"],
-        "script-src-elem": ["'self'", "https://cdn.skypack.dev"],
-        "connect-src": ["'self'", "*"],
-      },
-    },
-  }),
+    contentSecurityPolicy:false, 
+  })
 );
 app.use(cookieParser());
 app.use(express.json({ limit: "10kb" }));

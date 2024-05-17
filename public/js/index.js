@@ -2,7 +2,9 @@
 ///////////////                    ///////////////
 /////////////////////// IMPORTS ///////////////////////
 //////////////                    ///////////////
+	import'@babel/polyfill';
 import { login, logout, forgotPassword, resetPassword,updateUser, updatePassword } from "./login.js";
+
 import { submitNewArticleJs } from "./newArticle.js";
 import { editPage } from "./editArticle.js";
 import { deleteThisArticle } from "./deleteArticle.js";
