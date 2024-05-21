@@ -2,20 +2,30 @@
 	label(for="imageCover") Immagine
 	input(type="text", id="imageCover", name="imageCover", value=article.imageCover )
 .form-group
+	label(for="imageCover") Caption 
+	input(type="text", id="imageCaption", name="imageCaption", value=article.imageCaption )
+.form-group
 	label(for="title") Titolo
 	input(type="text", id="title", name="title", required, value=article.title)
 .form-group
+	label(for="title") Sottotitolo 
+	input(type="text", id="subheading", name="subheading", required, value=article.subheading)
+
+.form-group
+	label(for="authorName") Autore
+	input(type="text", id="authorName", name="authorName", required, value=article.authorName)
+.form-group
 	label(for="category") Categoria
 	select(id="category", name="category", required, value=article.category)
-		option(value="literature", selected) Letteratura
-		option(value="politics", selected) Politica
-		option(value="culture", selected) Cultura
-		option(value="technology", selected) Tecnologia
+		option(value="Literature", selected) Letteratura
+		option(value="Politics", selected) Politica
+		option(value="Culture", selected) Cultura
+		option(value="Technology", selected) Tecnologia
 .form-group
 	label(for="article") Scrivi l'articolo
 	textarea(id="article", name="article", required )=article.article
 .form-group
 	label(for="summary") Scrivi un riassunto 
 	textarea(id="summary", name="summary", required)=article.summary
-button(type="submit") Save
-a(href=`/articles/${article.category}/:${article.slug}`,)  Delete
+.form-group.buttonsAccept.flex.flex-column
+	button(class='buttonArticle',type="submit") Save

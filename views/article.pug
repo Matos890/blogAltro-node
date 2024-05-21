@@ -1,14 +1,22 @@
 extends base
+
 block content
-    section.Article.flex
-        .contentInnerWrapper.flex
-            .mainContent.flex
-                .containerArticleCollection.flex.flex-row
-                    .containerPictureArticle
-                    .containerText
-                        h1=article.title 
-                        p!=article.sanitizedHtml
-                    - if(user.role === 'admin')
-                        button.deleteArticle(type='button')
+    section.Article.flex.flex-column
+        .contentArticleWrapper.flex.flex-column
+            .containerArticleCollection.grid.col-6-row-3-1300
+                .containerTitleArticle
+                    h1(id='titleArticle')= article.title 
+                    h2(id='subheadingArticle')= article.subheading
+                .containerCategoryArticle 
+                    span= article.category
+                .containerAuthorArticle 
+                    p.authorArticleName= article.authorName
+                    .articleCreatedAt= article.createdAt
+                .containerPictureArticle
+                .containerArticle
+                    article.paragraphArticle!= article.sanitizedHtml
+                - if (user.role === 'admin')
+                    .form-group.buttonsAcceptArticle.flex.flex-column
+                        a.buttonArticle(href=`/protected/edit/${article.slug}`) Edit
+                        button.deleteArticle(type='button', id='deleteLink')
                             | Delete
-                        a(href=`/protected/edit/${article.slug}`) Edit

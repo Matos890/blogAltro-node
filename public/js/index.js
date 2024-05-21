@@ -1,9 +1,15 @@
-
 ///////////////                    ///////////////
 /////////////////////// IMPORTS ///////////////////////
 //////////////                    ///////////////
-	import'@babel/polyfill';
-import { login, logout, forgotPassword, resetPassword,updateUser, updatePassword } from "./login.js";
+import "@babel/polyfill";
+import {
+  login,
+  logout,
+  forgotPassword,
+  resetPassword,
+  updateUser,
+  updatePassword,
+} from "./login.js";
 
 import { submitNewArticleJs } from "./newArticle.js";
 import { editPage } from "./editArticle.js";
@@ -17,19 +23,22 @@ const logoutButton = document.querySelector(".logoutButton");
 const newArticleForm = document.getElementById("newArticle");
 const deleteArticle = document.querySelector(".deleteArticle");
 const editArticle = document.querySelector(".editArticle");
-const forgotPasswordbtn = document.querySelector('.forgotPassword');
-const resetPasswordform = document.querySelector('.resetPasswordForm');
-const updateUserForm = document.querySelector('.updateUser');
-const updatePasswordForm = document.querySelector('.updatePassword')
+const forgotPasswordbtn = document.querySelector(".forgotPassword");
+const resetPasswordform = document.querySelector(".resetPasswordForm");
+const updateUserForm = document.querySelector(".updateUser");
+const updatePasswordForm = document.querySelector(".updatePassword");
 let title = document.getElementById("title");
 let summary = document.getElementById("summary");
 let imageCover = document.getElementById("imageCover");
 let category = document.getElementById("category");
 let article = document.getElementById("article");
+let authorName = document.getElementById("authorName");
+let imageCaption = document.getElementById("imageCaption");
+let subheading = document.getElementById("subheading");
 ///////////////                    ///////////////
 /////////////////////// ACTIONS IMPLEMENTATIONS ///////////////////////
 //////////////                    ///////////////
-	//LOGIN
+//LOGIN
 if (loginForm)
   loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -43,12 +52,24 @@ if (newArticleForm)
   newArticleForm.addEventListener("submit", (e) => {
     e.preventDefault();
     imageCover = imageCover.value;
+    imageCaption = imageCaption.value;
     title = title.value;
+    subheading = subheading.value;
+    authorName = authorName.value;
     category = category.value;
     article = article.value;
     summary = summary.value;
     console.log("eddai dio cane");
-    submitNewArticleJs(imageCover, title, category, article, summary);
+    submitNewArticleJs(
+      imageCover,
+      imageCaption,
+      title,
+      subheading,
+      authorName,
+      category,
+      article,
+      summary,
+    );
   });
 //////LOG OUT
 if (logoutButton) logoutButton.addEventListener("click", logout);
@@ -57,46 +78,61 @@ if (editArticle)
   editArticle.addEventListener("submit", (e) => {
     e.preventDefault();
     imageCover = imageCover.value;
+    imageCaption = imageCaption.value;
     title = title.value;
+    subheading = subheading.value;
+    authorName = authorName.value;
     category = category.value;
     article = article.value;
     summary = summary.value;
-    editPage(imageCover, title, category, article, summary);
+    editPage(
+      imageCover,
+      imageCaption,
+      title,
+      subheading,
+      authorName,
+      category,
+      article,
+      summary,
+    );
     console.log("eddai");
   });
 /////DELETE ARTICLE
 if (deleteArticle) deleteArticle.addEventListener("click", deleteThisArticle);
 ////FORGOT PASSWORD
 //
-if(forgotPasswordbtn)
-	forgotPasswordbtn.addEventListener('submit', (e)=>{
-		e.preventDefault();
-		const email = document.getElementById("emailToForget").value;
-		console.log('yes');
-forgotPassword(email);
-	} )
+if (forgotPasswordbtn)
+  forgotPasswordbtn.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.getElementById("emailToForget").value;
+    console.log("yes");
+    forgotPassword(email);
+  });
 ///RESET PASSWORD
-if(resetPasswordform)
-	resetPasswordform.addEventListener('submit', (e)=>{
-		e.preventDefault();
-		const passwordReset = document.getElementById("passwordReset").value;
-		const passwordConfirmReset = document.getElementById('passwordConfirmReset').value;
-		resetPassword(passwordReset, passwordConfirmReset)
-	})
+if (resetPasswordform)
+  resetPasswordform.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const passwordReset = document.getElementById("passwordReset").value;
+    const passwordConfirmReset = document.getElementById(
+      "passwordConfirmReset",
+    ).value;
+    resetPassword(passwordReset, passwordConfirmReset);
+  });
 /////UPDATE USER
-if(updateUserForm)
-	updateUserForm.addEventListener('submit', (e)=>{
-		e.preventDefault();
-		const nameUpdate = document.getElementById("nameUpdate").value;
-		const emailUpdate = document.getElementById("emailUpdate").value;
-		updateUser(nameUpdate, emailUpdate)
-	})
-if(updatePasswordForm)
-	updatePasswordForm.addEventListener('submit', (e) =>{
-		e.preventDefault();
-		const currentPassword = document.getElementById("passwordCurrent").value;
-		const passwordNew = document.getElementById("passwordNew").value;
-		const passwordNewConfirm = document.getElementById("passwordNewConfirm").value;
-		console.log('ciao')
-		updatePassword(currentPassword, passwordNew, passwordNewConfirm);
-	})
+if (updateUserForm)
+  updateUserForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nameUpdate = document.getElementById("nameUpdate").value;
+    const emailUpdate = document.getElementById("emailUpdate").value;
+    updateUser(nameUpdate, emailUpdate);
+  });
+if (updatePasswordForm)
+  updatePasswordForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const currentPassword = document.getElementById("passwordCurrent").value;
+    const passwordNew = document.getElementById("passwordNew").value;
+    const passwordNewConfirm =
+      document.getElementById("passwordNewConfirm").value;
+    console.log("ciao");
+    updatePassword(currentPassword, passwordNew, passwordNewConfirm);
+  });

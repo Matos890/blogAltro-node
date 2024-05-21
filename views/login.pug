@@ -1,16 +1,15 @@
 extends base
 block content
-	section.mainPageSection.flex
-	.contentInnerWrapper.flex
+	section.mainPageSection.flex.flex-column
+		h1.titleSubmitArticle LOGIN
 		.login-form
-			h2.heading-secondary.ma-bt-lg Log into your account
-			form.form.form--login
-				.form__group
-				label.form__label(for='email') Email address
-				input#email.form__input(type='email', placeholder='you@example.com', required)
-				.form__group.ma-bt-md
-				label.form__label(for='password') Password
-				input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
-				.form__group
-				button.btn.btn--green Login
-				a(href="/protected/forgotPassword") forgot password 
+			form.form--login
+				.form-group
+					label.form__label(for='email') Email address
+					input#email.form__input(type='email', placeholder='you@example.com', required)
+				.form-group.ma-bt-md
+					label.form__label(for='password') Password
+					input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+				.form-group.buttonsAccept.flex.flex-column
+					button(class='buttonArticle', type='submit') Login
+					a(id='deleteLink', href="/protected/forgotPassword") forgot password 

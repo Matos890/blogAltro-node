@@ -2,7 +2,8 @@
 extends base
 
 block content
-	section.mainPageSection.flex
+	section.mainPageSection.flex.flex-column
+		h1.titleSubmitArticle Submit an Article
 		.contentInnerWrapper.flex
 			form(id="newArticle")
 				include _form_field

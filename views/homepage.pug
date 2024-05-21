@@ -7,24 +7,24 @@ block content
 							
 							.containerPictureHead
 							.containerText
-								h1 Main Article
-									p this is supposed to be the main article of this website.The one which is the catchiest La République des lettres vient de perdre son « Roi lire », une seconde fois. Déjà, en 2001, l’historien Pierre Nora qualifiait le départ de Bernard Pivot de la télévision de « deuil national ». Après vingt-huit ans à apostropher écrivains, artistes, politiques, sportifs ou chefs étoilés, ce « gratteur de têtes », comme il aimait se définir, refermait les guillemets d’une époque. Celle où les « bouillons de culture » mitonnés sans apprêt, pouvaient se déguster à des heures ouvrables ; où l’art de transmettre ne se confondait pas totalement avec promotion et où l’Audimat ne s’érigeait pas en diktat.
+								h1.titleSubmitArticle Main Article
+									p(class="homePageParagraph") this is supposed to be the main article of this website.The one which is the catchiest La République des lettres vient de perdre son « Roi lire », une seconde fois. Déjà, en 2001, l’historien Pierre Nora qualifiait le départ de Bernard Pivot de la télévision de « deuil national ». Après vingt-huit ans à apostropher écrivains, artistes, politiques, sportifs ou chefs étoilés, ce « gratteur de têtes », comme il aimait se définir, refermait les guillemets d’une époque. Celle où les « bouillons de culture » mitonnés sans apprêt, pouvaient se déguster à des heures ouvrables ; où l’art de transmettre ne se confondait pas totalement avec promotion et où l’Audimat ne s’érigeait pas en diktat.
 						.sideArticle.leftArticle.firstArticle
 							.containerPicture
 							.containerText
 								h2 Side Article 2
-								p this article is supposed to stay the left side of the page. It is in the first row.
+								p(class='homePageParagraph') this article is supposed to stay the left side of the page. It is in the first row.
 						.sideArticle.leftArticle.secondArticle
 							.containerPicture
 							.containerText
 								h2 Side Article 2
-								p this article is supposed to stay the left side of the page. It is in the second row.
+								p(class='homePageParagraph') this article is supposed to stay the left side of the page. It is in the second row.
 						.sideArticle.rightArticle.firstArticle
 							.containerPicture
 							.containerText
 
 								h2 Side Article 3 
-								p this article is supposed to stain the right side of the page. It is in the first row.
+								p(class='homePageParagraph') this article is supposed to stain the right side of the page. It is in the first row.
 							      
 							      
 						.sideArticle.rightArticle.secondArticle
@@ -32,7 +32,7 @@ block content
 							.containerText
 
 								h2 Side Article 4 
-								p this article is supposed to stay in the right side of the page. It is in the  second row.
+								p(class='homePageParagraph') this article is supposed to stay in the right side of the page. It is in the  second row.
 			section.SecondPageArticleLists
 				.marginControl.flex
 						.articleCollectionCentered.flex.flex-column
@@ -44,4 +44,4 @@ block content
 										.containerTextS2
 
 											h2.titleArticleCollection=article.title  
-											p!=article.sanitizedHtml
+											p(class=homePageParagraph)!=article.summary

@@ -26,9 +26,8 @@ const createSendToken = (user, statusCode, res) => {
     expires: expiresAt,
     secure: true,
 
-    httpOnly: true,
+    httpOnly:process.env.NODE_ENV ==='production',
     sameSite: "None",
-    partitioned: true,
   };
 
   // Imposta il cookie JWT con le opzioni configurate
@@ -76,7 +75,6 @@ exports.logout = (req, res) => {
   res.cookie("jwt", "loggedout", {
     expires: new Date(Date.now() + 10 * 1000),
     secure: true,
-
     httpOnly: true,
     sameSite: "None",
     partitioned: true,

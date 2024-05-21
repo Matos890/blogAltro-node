@@ -11319,29 +11319,32 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 _axios.default.defaults.withCredentials = true;
 var submitNewArticleJs = exports.submitNewArticleJs = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(imageCover, title, category, article, summary) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(imageCover, imageCaption, title, subheading, authorName, category, article, summary) {
     var token, res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
           // Recupera il token JWT dal cookie
-          token = new URLSearchParams(window.location.hash).get('access_token');
+          token = new URLSearchParams(window.location.hash).get("access_token");
           _context.next = 4;
           return (0, _axios.default)({
             method: "POST",
             url: "http://localhost:7000/api/v1/articles/submit-new-article",
             data: {
-              title: title,
-              summary: summary,
               imageCover: imageCover,
+              imageCaption: imageCaption,
+              title: title,
+              subheading: subheading,
+              authorName: authorName,
               category: category,
-              article: article
+              article: article,
+              summary: summary
             },
             headers: {
-              'content-type': 'application/json',
-              'accept': 'application/json',
-              'Authorization': token
+              "content-type": "application/json",
+              accept: "application/json",
+              Authorization: token
             }
           });
         case 4:
@@ -11364,7 +11367,7 @@ var submitNewArticleJs = exports.submitNewArticleJs = /*#__PURE__*/function () {
       }
     }, _callee, null, [[0, 9]]);
   }));
-  return function submitNewArticleJs(_x, _x2, _x3, _x4, _x5) {
+  return function submitNewArticleJs(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -11383,9 +11386,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 _axios.default.defaults.withCredentials = true;
 var thisUrl = window.location.href;
-var slug = thisUrl.split('/').pop();
+var slug = thisUrl.split("/").pop();
 var editPage = exports.editPage = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(imageCover, title, category, article, summary) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(imageCover, imageCaption, title, subheading, authorName, category, article, summary) {
     var res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
@@ -11397,7 +11400,10 @@ var editPage = exports.editPage = /*#__PURE__*/function () {
             url: "http://localhost:7000/api/v1/articles/edit/".concat(slug),
             data: {
               imageCover: imageCover,
+              imageCaption: imageCaption,
               title: title,
+              subheading: subheading,
+              authorName: authorName,
               category: category,
               article: article,
               summary: summary
@@ -11419,14 +11425,14 @@ var editPage = exports.editPage = /*#__PURE__*/function () {
         case 7:
           _context.prev = 7;
           _context.t0 = _context["catch"](0);
-          console.error('Error:', _context.t0);
+          console.error("Error:", _context.t0);
         case 10:
         case "end":
           return _context.stop();
       }
     }, _callee, null, [[0, 7]]);
   }));
-  return function editPage(_x, _x2, _x3, _x4, _x5) {
+  return function editPage(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -11635,15 +11641,18 @@ var logoutButton = document.querySelector(".logoutButton");
 var newArticleForm = document.getElementById("newArticle");
 var deleteArticle = document.querySelector(".deleteArticle");
 var editArticle = document.querySelector(".editArticle");
-var forgotPasswordbtn = document.querySelector('.forgotPassword');
-var resetPasswordform = document.querySelector('.resetPasswordForm');
-var updateUserForm = document.querySelector('.updateUser');
-var updatePasswordForm = document.querySelector('.updatePassword');
+var forgotPasswordbtn = document.querySelector(".forgotPassword");
+var resetPasswordform = document.querySelector(".resetPasswordForm");
+var updateUserForm = document.querySelector(".updateUser");
+var updatePasswordForm = document.querySelector(".updatePassword");
 var title = document.getElementById("title");
 var summary = document.getElementById("summary");
 var imageCover = document.getElementById("imageCover");
 var category = document.getElementById("category");
 var article = document.getElementById("article");
+var authorName = document.getElementById("authorName");
+var imageCaption = document.getElementById("imageCaption");
+var subheading = document.getElementById("subheading");
 ///////////////                    ///////////////
 /////////////////////// ACTIONS IMPLEMENTATIONS ///////////////////////
 //////////////                    ///////////////
@@ -11659,12 +11668,15 @@ if (loginForm) loginForm.addEventListener("submit", function (e) {
 if (newArticleForm) newArticleForm.addEventListener("submit", function (e) {
   e.preventDefault();
   imageCover = imageCover.value;
+  imageCaption = imageCaption.value;
   title = title.value;
+  subheading = subheading.value;
+  authorName = authorName.value;
   category = category.value;
   article = article.value;
   summary = summary.value;
   console.log("eddai dio cane");
-  (0, _newArticle.submitNewArticleJs)(imageCover, title, category, article, summary);
+  (0, _newArticle.submitNewArticleJs)(imageCover, imageCaption, title, subheading, authorName, category, article, summary);
 });
 //////LOG OUT
 if (logoutButton) logoutButton.addEventListener("click", _login.logout);
@@ -11672,43 +11684,46 @@ if (logoutButton) logoutButton.addEventListener("click", _login.logout);
 if (editArticle) editArticle.addEventListener("submit", function (e) {
   e.preventDefault();
   imageCover = imageCover.value;
+  imageCaption = imageCaption.value;
   title = title.value;
+  subheading = subheading.value;
+  authorName = authorName.value;
   category = category.value;
   article = article.value;
   summary = summary.value;
-  (0, _editArticle.editPage)(imageCover, title, category, article, summary);
+  (0, _editArticle.editPage)(imageCover, imageCaption, title, subheading, authorName, category, article, summary);
   console.log("eddai");
 });
 /////DELETE ARTICLE
 if (deleteArticle) deleteArticle.addEventListener("click", _deleteArticle.deleteThisArticle);
 ////FORGOT PASSWORD
 //
-if (forgotPasswordbtn) forgotPasswordbtn.addEventListener('submit', function (e) {
+if (forgotPasswordbtn) forgotPasswordbtn.addEventListener("submit", function (e) {
   e.preventDefault();
   var email = document.getElementById("emailToForget").value;
-  console.log('yes');
+  console.log("yes");
   (0, _login.forgotPassword)(email);
 });
 ///RESET PASSWORD
-if (resetPasswordform) resetPasswordform.addEventListener('submit', function (e) {
+if (resetPasswordform) resetPasswordform.addEventListener("submit", function (e) {
   e.preventDefault();
   var passwordReset = document.getElementById("passwordReset").value;
-  var passwordConfirmReset = document.getElementById('passwordConfirmReset').value;
+  var passwordConfirmReset = document.getElementById("passwordConfirmReset").value;
   (0, _login.resetPassword)(passwordReset, passwordConfirmReset);
 });
 /////UPDATE USER
-if (updateUserForm) updateUserForm.addEventListener('submit', function (e) {
+if (updateUserForm) updateUserForm.addEventListener("submit", function (e) {
   e.preventDefault();
   var nameUpdate = document.getElementById("nameUpdate").value;
   var emailUpdate = document.getElementById("emailUpdate").value;
   (0, _login.updateUser)(nameUpdate, emailUpdate);
 });
-if (updatePasswordForm) updatePasswordForm.addEventListener('submit', function (e) {
+if (updatePasswordForm) updatePasswordForm.addEventListener("submit", function (e) {
   e.preventDefault();
   var currentPassword = document.getElementById("passwordCurrent").value;
   var passwordNew = document.getElementById("passwordNew").value;
   var passwordNewConfirm = document.getElementById("passwordNewConfirm").value;
-  console.log('ciao');
+  console.log("ciao");
   (0, _login.updatePassword)(currentPassword, passwordNew, passwordNewConfirm);
 });
 },{"core-js/modules/es6.array.copy-within.js":"../../node_modules/core-js/modules/es6.array.copy-within.js","core-js/modules/es6.array.fill.js":"../../node_modules/core-js/modules/es6.array.fill.js","core-js/modules/es6.array.filter.js":"../../node_modules/core-js/modules/es6.array.filter.js","core-js/modules/es6.array.find.js":"../../node_modules/core-js/modules/es6.array.find.js","core-js/modules/es6.array.find-index.js":"../../node_modules/core-js/modules/es6.array.find-index.js","core-js/modules/es7.array.flat-map.js":"../../node_modules/core-js/modules/es7.array.flat-map.js","core-js/modules/es6.array.from.js":"../../node_modules/core-js/modules/es6.array.from.js","core-js/modules/es7.array.includes.js":"../../node_modules/core-js/modules/es7.array.includes.js","core-js/modules/es6.array.iterator.js":"../../node_modules/core-js/modules/es6.array.iterator.js","core-js/modules/es6.array.map.js":"../../node_modules/core-js/modules/es6.array.map.js","core-js/modules/es6.array.of.js":"../../node_modules/core-js/modules/es6.array.of.js","core-js/modules/es6.array.slice.js":"../../node_modules/core-js/modules/es6.array.slice.js","core-js/modules/es6.array.species.js":"../../node_modules/core-js/modules/es6.array.species.js","core-js/modules/es6.date.to-primitive.js":"../../node_modules/core-js/modules/es6.date.to-primitive.js","core-js/modules/es6.function.has-instance.js":"../../node_modules/core-js/modules/es6.function.has-instance.js","core-js/modules/es6.function.name.js":"../../node_modules/core-js/modules/es6.function.name.js","core-js/modules/es6.map.js":"../../node_modules/core-js/modules/es6.map.js","core-js/modules/es6.math.acosh.js":"../../node_modules/core-js/modules/es6.math.acosh.js","core-js/modules/es6.math.asinh.js":"../../node_modules/core-js/modules/es6.math.asinh.js","core-js/modules/es6.math.atanh.js":"../../node_modules/core-js/modules/es6.math.atanh.js","core-js/modules/es6.math.cbrt.js":"../../node_modules/core-js/modules/es6.math.cbrt.js","core-js/modules/es6.math.clz32.js":"../../node_modules/core-js/modules/es6.math.clz32.js","core-js/modules/es6.math.cosh.js":"../../node_modules/core-js/modules/es6.math.cosh.js","core-js/modules/es6.math.expm1.js":"../../node_modules/core-js/modules/es6.math.expm1.js","core-js/modules/es6.math.fround.js":"../../node_modules/core-js/modules/es6.math.fround.js","core-js/modules/es6.math.hypot.js":"../../node_modules/core-js/modules/es6.math.hypot.js","core-js/modules/es6.math.imul.js":"../../node_modules/core-js/modules/es6.math.imul.js","core-js/modules/es6.math.log1p.js":"../../node_modules/core-js/modules/es6.math.log1p.js","core-js/modules/es6.math.log10.js":"../../node_modules/core-js/modules/es6.math.log10.js","core-js/modules/es6.math.log2.js":"../../node_modules/core-js/modules/es6.math.log2.js","core-js/modules/es6.math.sign.js":"../../node_modules/core-js/modules/es6.math.sign.js","core-js/modules/es6.math.sinh.js":"../../node_modules/core-js/modules/es6.math.sinh.js","core-js/modules/es6.math.tanh.js":"../../node_modules/core-js/modules/es6.math.tanh.js","core-js/modules/es6.math.trunc.js":"../../node_modules/core-js/modules/es6.math.trunc.js","core-js/modules/es6.number.constructor.js":"../../node_modules/core-js/modules/es6.number.constructor.js","core-js/modules/es6.number.epsilon.js":"../../node_modules/core-js/modules/es6.number.epsilon.js","core-js/modules/es6.number.is-finite.js":"../../node_modules/core-js/modules/es6.number.is-finite.js","core-js/modules/es6.number.is-integer.js":"../../node_modules/core-js/modules/es6.number.is-integer.js","core-js/modules/es6.number.is-nan.js":"../../node_modules/core-js/modules/es6.number.is-nan.js","core-js/modules/es6.number.is-safe-integer.js":"../../node_modules/core-js/modules/es6.number.is-safe-integer.js","core-js/modules/es6.number.max-safe-integer.js":"../../node_modules/core-js/modules/es6.number.max-safe-integer.js","core-js/modules/es6.number.min-safe-integer.js":"../../node_modules/core-js/modules/es6.number.min-safe-integer.js","core-js/modules/es6.number.parse-float.js":"../../node_modules/core-js/modules/es6.number.parse-float.js","core-js/modules/es6.number.parse-int.js":"../../node_modules/core-js/modules/es6.number.parse-int.js","core-js/modules/es6.object.assign.js":"../../node_modules/core-js/modules/es6.object.assign.js","core-js/modules/es7.object.define-getter.js":"../../node_modules/core-js/modules/es7.object.define-getter.js","core-js/modules/es7.object.define-setter.js":"../../node_modules/core-js/modules/es7.object.define-setter.js","core-js/modules/es7.object.entries.js":"../../node_modules/core-js/modules/es7.object.entries.js","core-js/modules/es6.object.freeze.js":"../../node_modules/core-js/modules/es6.object.freeze.js","core-js/modules/es6.object.get-own-property-descriptor.js":"../../node_modules/core-js/modules/es6.object.get-own-property-descriptor.js","core-js/modules/es7.object.get-own-property-descriptors.js":"../../node_modules/core-js/modules/es7.object.get-own-property-descriptors.js","core-js/modules/es6.object.get-own-property-names.js":"../../node_modules/core-js/modules/es6.object.get-own-property-names.js","core-js/modules/es6.object.get-prototype-of.js":"../../node_modules/core-js/modules/es6.object.get-prototype-of.js","core-js/modules/es7.object.lookup-getter.js":"../../node_modules/core-js/modules/es7.object.lookup-getter.js","core-js/modules/es7.object.lookup-setter.js":"../../node_modules/core-js/modules/es7.object.lookup-setter.js","core-js/modules/es6.object.prevent-extensions.js":"../../node_modules/core-js/modules/es6.object.prevent-extensions.js","core-js/modules/es6.object.to-string.js":"../../node_modules/core-js/modules/es6.object.to-string.js","core-js/modules/es6.object.is.js":"../../node_modules/core-js/modules/es6.object.is.js","core-js/modules/es6.object.is-frozen.js":"../../node_modules/core-js/modules/es6.object.is-frozen.js","core-js/modules/es6.object.is-sealed.js":"../../node_modules/core-js/modules/es6.object.is-sealed.js","core-js/modules/es6.object.is-extensible.js":"../../node_modules/core-js/modules/es6.object.is-extensible.js","core-js/modules/es6.object.keys.js":"../../node_modules/core-js/modules/es6.object.keys.js","core-js/modules/es6.object.seal.js":"../../node_modules/core-js/modules/es6.object.seal.js","core-js/modules/es7.object.values.js":"../../node_modules/core-js/modules/es7.object.values.js","core-js/modules/es6.promise.js":"../../node_modules/core-js/modules/es6.promise.js","core-js/modules/es7.promise.finally.js":"../../node_modules/core-js/modules/es7.promise.finally.js","core-js/modules/es6.reflect.apply.js":"../../node_modules/core-js/modules/es6.reflect.apply.js","core-js/modules/es6.reflect.construct.js":"../../node_modules/core-js/modules/es6.reflect.construct.js","core-js/modules/es6.reflect.define-property.js":"../../node_modules/core-js/modules/es6.reflect.define-property.js","core-js/modules/es6.reflect.delete-property.js":"../../node_modules/core-js/modules/es6.reflect.delete-property.js","core-js/modules/es6.reflect.get.js":"../../node_modules/core-js/modules/es6.reflect.get.js","core-js/modules/es6.reflect.get-own-property-descriptor.js":"../../node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js","core-js/modules/es6.reflect.get-prototype-of.js":"../../node_modules/core-js/modules/es6.reflect.get-prototype-of.js","core-js/modules/es6.reflect.has.js":"../../node_modules/core-js/modules/es6.reflect.has.js","core-js/modules/es6.reflect.is-extensible.js":"../../node_modules/core-js/modules/es6.reflect.is-extensible.js","core-js/modules/es6.reflect.own-keys.js":"../../node_modules/core-js/modules/es6.reflect.own-keys.js","core-js/modules/es6.reflect.prevent-extensions.js":"../../node_modules/core-js/modules/es6.reflect.prevent-extensions.js","core-js/modules/es6.reflect.set.js":"../../node_modules/core-js/modules/es6.reflect.set.js","core-js/modules/es6.reflect.set-prototype-of.js":"../../node_modules/core-js/modules/es6.reflect.set-prototype-of.js","core-js/modules/es6.regexp.constructor.js":"../../node_modules/core-js/modules/es6.regexp.constructor.js","core-js/modules/es6.regexp.flags.js":"../../node_modules/core-js/modules/es6.regexp.flags.js","core-js/modules/es6.regexp.match.js":"../../node_modules/core-js/modules/es6.regexp.match.js","core-js/modules/es6.regexp.replace.js":"../../node_modules/core-js/modules/es6.regexp.replace.js","core-js/modules/es6.regexp.split.js":"../../node_modules/core-js/modules/es6.regexp.split.js","core-js/modules/es6.regexp.search.js":"../../node_modules/core-js/modules/es6.regexp.search.js","core-js/modules/es6.regexp.to-string.js":"../../node_modules/core-js/modules/es6.regexp.to-string.js","core-js/modules/es6.set.js":"../../node_modules/core-js/modules/es6.set.js","core-js/modules/es6.symbol.js":"../../node_modules/core-js/modules/es6.symbol.js","core-js/modules/es7.symbol.async-iterator.js":"../../node_modules/core-js/modules/es7.symbol.async-iterator.js","core-js/modules/es6.string.anchor.js":"../../node_modules/core-js/modules/es6.string.anchor.js","core-js/modules/es6.string.big.js":"../../node_modules/core-js/modules/es6.string.big.js","core-js/modules/es6.string.blink.js":"../../node_modules/core-js/modules/es6.string.blink.js","core-js/modules/es6.string.bold.js":"../../node_modules/core-js/modules/es6.string.bold.js","core-js/modules/es6.string.code-point-at.js":"../../node_modules/core-js/modules/es6.string.code-point-at.js","core-js/modules/es6.string.ends-with.js":"../../node_modules/core-js/modules/es6.string.ends-with.js","core-js/modules/es6.string.fixed.js":"../../node_modules/core-js/modules/es6.string.fixed.js","core-js/modules/es6.string.fontcolor.js":"../../node_modules/core-js/modules/es6.string.fontcolor.js","core-js/modules/es6.string.fontsize.js":"../../node_modules/core-js/modules/es6.string.fontsize.js","core-js/modules/es6.string.from-code-point.js":"../../node_modules/core-js/modules/es6.string.from-code-point.js","core-js/modules/es6.string.includes.js":"../../node_modules/core-js/modules/es6.string.includes.js","core-js/modules/es6.string.italics.js":"../../node_modules/core-js/modules/es6.string.italics.js","core-js/modules/es6.string.iterator.js":"../../node_modules/core-js/modules/es6.string.iterator.js","core-js/modules/es6.string.link.js":"../../node_modules/core-js/modules/es6.string.link.js","core-js/modules/es7.string.pad-start.js":"../../node_modules/core-js/modules/es7.string.pad-start.js","core-js/modules/es7.string.pad-end.js":"../../node_modules/core-js/modules/es7.string.pad-end.js","core-js/modules/es6.string.raw.js":"../../node_modules/core-js/modules/es6.string.raw.js","core-js/modules/es6.string.repeat.js":"../../node_modules/core-js/modules/es6.string.repeat.js","core-js/modules/es6.string.small.js":"../../node_modules/core-js/modules/es6.string.small.js","core-js/modules/es6.string.starts-with.js":"../../node_modules/core-js/modules/es6.string.starts-with.js","core-js/modules/es6.string.strike.js":"../../node_modules/core-js/modules/es6.string.strike.js","core-js/modules/es6.string.sub.js":"../../node_modules/core-js/modules/es6.string.sub.js","core-js/modules/es6.string.sup.js":"../../node_modules/core-js/modules/es6.string.sup.js","core-js/modules/es7.string.trim-left.js":"../../node_modules/core-js/modules/es7.string.trim-left.js","core-js/modules/es7.string.trim-right.js":"../../node_modules/core-js/modules/es7.string.trim-right.js","core-js/modules/es6.typed.array-buffer.js":"../../node_modules/core-js/modules/es6.typed.array-buffer.js","core-js/modules/es6.typed.int8-array.js":"../../node_modules/core-js/modules/es6.typed.int8-array.js","core-js/modules/es6.typed.uint8-array.js":"../../node_modules/core-js/modules/es6.typed.uint8-array.js","core-js/modules/es6.typed.uint8-clamped-array.js":"../../node_modules/core-js/modules/es6.typed.uint8-clamped-array.js","core-js/modules/es6.typed.int16-array.js":"../../node_modules/core-js/modules/es6.typed.int16-array.js","core-js/modules/es6.typed.uint16-array.js":"../../node_modules/core-js/modules/es6.typed.uint16-array.js","core-js/modules/es6.typed.int32-array.js":"../../node_modules/core-js/modules/es6.typed.int32-array.js","core-js/modules/es6.typed.uint32-array.js":"../../node_modules/core-js/modules/es6.typed.uint32-array.js","core-js/modules/es6.typed.float32-array.js":"../../node_modules/core-js/modules/es6.typed.float32-array.js","core-js/modules/es6.typed.float64-array.js":"../../node_modules/core-js/modules/es6.typed.float64-array.js","core-js/modules/es6.weak-map.js":"../../node_modules/core-js/modules/es6.weak-map.js","core-js/modules/es6.weak-set.js":"../../node_modules/core-js/modules/es6.weak-set.js","core-js/modules/web.timers.js":"../../node_modules/core-js/modules/web.timers.js","core-js/modules/web.immediate.js":"../../node_modules/core-js/modules/web.immediate.js","core-js/modules/web.dom.iterable.js":"../../node_modules/core-js/modules/web.dom.iterable.js","regenerator-runtime/runtime.js":"../../node_modules/regenerator-runtime/runtime.js","./login.js":"login.js","./newArticle.js":"newArticle.js","./editArticle.js":"editArticle.js","./deleteArticle.js":"deleteArticle.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -11736,7 +11751,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43313" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45701" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

@@ -14,22 +14,11 @@ const rateLimit = require("express-rate-limit");
 const cors = require("cors");
 
 // Middleware per sicurezza e configurazione
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:7000");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
 app.use(
   helmet({
-    contentSecurityPolicy:false, 
-  })
+    contentSecurityPolicy: false,
+  }),
 );
-app.use(cookieParser());
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(methodOverride("_method"));
@@ -38,6 +27,14 @@ app.use(methodOverride("_method"));
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+app.use(cookieParser());
+const corsOptions = {
+  origin: "http://your-frontend-domain.com", // Sostituisci con il dominio del tuo frontend
+  credentials: true, // Abilita l'invio dei cookie
+};
+
+app.use(cors(corsOptions));
 //app.use(
 //rateLimit({
 //max: 100,
@@ -57,5 +54,4 @@ app.use("/api/v1/articles", require("./routes/articleRouter.js"));
 app.use("/api/v1/users", require("./routes/userRouter.js"));
 app.use("/api/v1/comments", require("./routes/commentRouter.js"));
 app.use(require("./routes/viewRoute"));
-
 module.exports = app;

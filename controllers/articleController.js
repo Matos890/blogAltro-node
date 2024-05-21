@@ -6,10 +6,10 @@ const catchAsync = require("./../utilis/catchAsync");
 
 exports.getAllArticles = factory.getAll(Articles);
 exports.createArticle = factory.createOne(Articles);
-exports.deleteArticle = factory.deleteOne(Articles)
+exports.deleteArticle = factory.deleteOne(Articles);
 
 exports.updateArticles = factory.updateOne(Articles);
-exports.updateArticle =  catchAsync(async (req, res, next) => {
+exports.updateArticle = catchAsync(async (req, res, next) => {
   const article = await Articles.findOne({ slug: req.params.slug });
 
   if (!article) {
@@ -18,17 +18,18 @@ exports.updateArticle =  catchAsync(async (req, res, next) => {
 
   article.imageCover = req.body.imageCover;
   article.title = req.body.title;
+	article.subheading = req.body.subheading;
+  article.authorName = req.body.authorName;
+  article.imageCaption = req.body.imageCaption;
   article.category = req.body.category;
   article.article = req.body.article;
 
   const updatedArticle = await article.save();
 
-    res.status(200).json({
-      status: 'success',
-      data: {
-        updatedArticle
-      },
-    });
+  res.status(200).json({
+    status: "success",
+    data: {
+      updatedArticle,
+    },
+  });
 });
-
-
