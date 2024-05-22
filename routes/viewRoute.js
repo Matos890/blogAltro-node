@@ -6,7 +6,7 @@ const authController = require("./../controllers/authController");
 
 const router = express.Router();
 //HOMEPAGE AND ARTICLES ROUTES
-router.get("/",  viewController.getOverview);
+router.get("/", authController.isLoggedIn, viewController.getOverview);
 
 
 //CREATION AND HANDLING OF USERS

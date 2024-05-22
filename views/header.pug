@@ -1,10 +1,9 @@
 header
-  .headerWrapper
-    .headerBorder.flex
-      .headerContent.flex
-        .contentWrapper.flex
+  .headerWrapper.flex
+        .contentWrapperLogo
           a(href="/")
             .logo-image
+        .contentWrapperNav.flex
           .navWrapper
             nav
               ul.garamond
@@ -12,5 +11,8 @@ header
                 span.nav__items Literature
                 span.nav__items Politics
                 span.nav__items Culture
-            a.logoutButton
-              span Logout
+        
+        .form-groupHeader.buttonsAccept.flex.flex-column
+          -if(user)
+            button(class='buttonLogout') 
+              a.logoutButton Logout
