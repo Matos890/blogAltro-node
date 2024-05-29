@@ -12,12 +12,13 @@ const xss = require("xss-clean");
 const mongoSanitize = require("express-mongo-sanitize");
 const rateLimit = require("express-rate-limit");
 const cors = require("cors");
-
+app.use(cors());
+app.options('*', cors())
 // Middleware per sicurezza e configurazione
 app.use(
   helmet({
     contentSecurityPolicy: false,
-  }),
+  })
 );
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
@@ -29,12 +30,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(cookieParser());
-const corsOptions = {
-  origin: "http://your-frontend-domain.com", // Sostituisci con il dominio del tuo frontend
-  credentials: true, // Abilita l'invio dei cookie
-};
 
-app.use(cors(corsOptions));
 //app.use(
 //rateLimit({
 //max: 100,

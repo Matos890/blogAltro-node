@@ -9,7 +9,7 @@ const { default: slugify } = require("slugify");
 exports.getOverview = catchAsync(async (req, res) => {
   const articles = await Articles.find();
   res.status(200).render("homepage", {
-    title: "Homepage",
+    title: "Altro | Homepage",
     articles,
   });
   console.log(res.data)
@@ -26,22 +26,22 @@ exports.getArticle = catchAsync(async (req, res, next) => {
 });
 exports.getPasswordForgot = catchAsync(async (req,res,next)=>{
 	res.status(200).render('forgotPassword', {
-		title:'forgot your password'
+		title:'Forgot Your Password'
 	})
 })
 exports.getResetPassword = catchAsync(async (req,res,next)=>{
 if(req.params.token)
 	res.status(200).render('resetPassword', {
-		title:'reset your password'
+		title:'Reset Your Password'
 	})
 })
 exports.getUpdateUser = catchAsync(async (req,res, next) =>{
 	res.status(200).render('updateUser', {
-		title:'update user'
+		title:'Update User'
 	})
 })
 exports.newArticle = (req, res) => {
-  res.render("newArticle", { article: new Articles() });
+  res.render("newArticle", {title:'Write a New Article', article: new Articles() });
 };
 //exports.submitNewArticle = catchAsync(async (req, res) => {
   //const article = await Articles.create(req.body);
@@ -85,6 +85,6 @@ exports.viewSignUpPage = catchAsync(async (req, res) => {
 // VIEW LOGIN PAGE
 exports.viewLoginPage = catchAsync(async(req,res) =>{
 	res.status(200).render('login', {
-		title:'log in to your account'
+		title:'Log In to your account'
 	})
 })
