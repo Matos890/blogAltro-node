@@ -1,18 +1,19 @@
 header
-  .headerWrapper.flex
-        .contentWrapperLogo
-          a(href="/")
-            .logo-image
-        .contentWrapperNav.flex
-          .navWrapper
-            nav
-              ul.garamond
-                span.nav__items About Us
-                span.nav__items Literature
-                span.nav__items Politics
-                span.nav__items Culture
-        
-        .form-groupHeader.buttonsAccept.flex.flex-column
-          -if(user)
-            button(class='buttonLogout') 
-              a.logoutButton Logout
+  .headerWrapper
+    .contentWrapperLogo
+      a(href="/")
+    .contentWrapperNav.flex
+      .navWrapper
+        nav
+          ul.garamond
+            span.navItems.nav__items About Us
+            span.navItems.nav__items Literature
+            span.navItems
+              a(href="/").logo-image
+            span.navItems.nav__items Politics
+            span.navItems.nav__items Culture
+
+    - if (user)
+      .form-groupHeader.buttonsAccept.flex.flex-column
+        button(class='buttonLogout') 
+          a.logoutButton Logout
