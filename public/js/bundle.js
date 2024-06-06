@@ -11319,7 +11319,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 _axios.default.defaults.withCredentials = true;
 var submitNewArticleJs = exports.submitNewArticleJs = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(imageCover, imageCaption, title, subheading, authorName, category, article, summary) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
     var token, res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
@@ -11331,16 +11331,7 @@ var submitNewArticleJs = exports.submitNewArticleJs = /*#__PURE__*/function () {
           return (0, _axios.default)({
             method: "POST",
             url: "http://localhost:7000/api/v1/articles/submit-new-article",
-            data: {
-              imageCover: imageCover,
-              imageCaption: imageCaption,
-              title: title,
-              subheading: subheading,
-              authorName: authorName,
-              category: category,
-              article: article,
-              summary: summary
-            },
+            data: data,
             headers: {
               "content-type": "application/json",
               accept: "application/json",
@@ -11367,7 +11358,7 @@ var submitNewArticleJs = exports.submitNewArticleJs = /*#__PURE__*/function () {
       }
     }, _callee, null, [[0, 9]]);
   }));
-  return function submitNewArticleJs(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8) {
+  return function submitNewArticleJs(_x) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -11667,16 +11658,17 @@ if (loginForm) loginForm.addEventListener("submit", function (e) {
 ///////Submit new article
 if (newArticleForm) newArticleForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  imageCover = imageCover.value;
-  imageCaption = imageCaption.value;
-  title = title.value;
-  subheading = subheading.value;
-  authorName = authorName.value;
-  category = category.value;
-  article = article.value;
-  summary = summary.value;
+  var form = new FormData();
+  form.append("imageCover", imageCover.files[0]);
+  form.append("imageCaption", imageCaption.value);
+  form.append("title", title.value);
+  form.append("subheading", subheading.value);
+  form.append("authorName", authorName.value);
+  form.append("category", category.value);
+  form.append("article", article.value);
+  form.append("summary", summary.value);
   console.log("eddai dio cane");
-  (0, _newArticle.submitNewArticleJs)(imageCover, imageCaption, title, subheading, authorName, category, article, summary);
+  (0, _newArticle.submitNewArticleJs)(form);
 });
 //////LOG OUT
 if (logoutButton) logoutButton.addEventListener("click", _login.logout);
@@ -11751,7 +11743,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45701" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41567" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

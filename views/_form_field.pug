@@ -1,6 +1,6 @@
 .form-group
 	label(for="imageCover") Immagine
-	input(type="text", id="imageCover", name="imageCover", value=article.imageCover )
+	input(accept='image/*',type="file", id="imageCover", name="imageCover", value=article.imageCover )
 .form-group
 	label(for="imageCover") Caption 
 	input(type="text", id="imageCaption", name="imageCaption", value=article.imageCaption )

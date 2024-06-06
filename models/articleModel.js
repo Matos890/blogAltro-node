@@ -33,6 +33,7 @@ const articleSchema = new mongoose.Schema(
     imageCover: {
       type: String,
       required: true,
+      default: 'default.jpg'
     },
     imageCaption: {
       type: String,

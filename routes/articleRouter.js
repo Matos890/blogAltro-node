@@ -8,7 +8,7 @@ router
   .get(articleController.getAllArticles)
 router.use(  authController.isLoggedIn, authController.protect)
 
-router.route("/submit-new-article").post(authController.restrict("writer", "admin"),articleController.createArticle);
+router.route("/submit-new-article").post(authController.restrict("writer", "admin"),articleController.uploadArticleImage, articleController.resizeArticlePhoto, articleController.createArticle);
 router.delete("/:slug", articleController.deleteArticle)
 router.get("/articles/:category/:slug", viewController.getArticle
 

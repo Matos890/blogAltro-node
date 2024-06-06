@@ -6,21 +6,29 @@ block content
 						.headArticle
 							
 							.containerPictureHead
+								.pictureInsideText
+									
+									img.imgMain(src='/img/dutch.jpeg')
 							.containerText
 								h1.titleSubmitArticle Main Article
 									p(class="homePageParagraph") this is supposed to be the main article of this website.The one which is the catchiest La République des lettres vient de perdre son « Roi lire », une seconde fois. Déjà, en 2001, l’historien Pierre Nora qualifiait le départ de Bernard Pivot de la télévision de « deuil national ». Après vingt-huit ans à apostropher écrivains, artistes, politiques, sportifs ou chefs étoilés, ce « gratteur de têtes », comme il aimait se définir, refermait les guillemets d’une époque. Celle où les « bouillons de culture » mitonnés sans apprêt, pouvaient se déguster à des heures ouvrables ; où l’art de transmettre ne se confondait pas totalement avec promotion et où l’Audimat ne s’érigeait pas en diktat.
 						aside.sideArticle.leftArticle.firstArticle
 							.containerPicture
+								.pictureInsideLateral
+									
+									img.imgMain(src='/img/meloni.jpeg')
 							.containerText
 								h2 Side Article 2
 								p(class='homePageParagraph') this article is supposed to stay the left side of the page. It is in the first row.
 						aside.sideArticle.leftArticle.secondArticle
 							.containerPicture
+								.pictureInsideLateral
 							.containerText
 								h2 Side Article 2
 								p(class='homePageParagraph') this article is supposed to stay the left side of the page. It is in the second row.
 						aside.sideArticle.rightArticle.firstArticle
 							.containerPicture
+								.pictureInsideLateral
 							.containerText
 
 								h2 Side Article 3 
@@ -29,6 +37,7 @@ block content
 							      
 						aside.sideArticle.rightArticle.secondArticle
 							.containerPicture
+								.pictureInsideLateral
 							.containerText
 
 								h2 Side Article 4 
@@ -39,8 +48,11 @@ block content
 						
 							each article in articles
 								a(href=`/articles/${article.category}/${article.slug}`) 
-									.containerArticleCollection.flex.flex-row
+									.containerArticleCollection.flex.flex-column
 										.containerPictureSecondSectionHome
+											.pictureInsideSecondSection
+												
+												img.imgMain(src='/img/meloni.jpeg')
 										.containerTextS2
 
 											h2.titleArticleCollection=article.title  

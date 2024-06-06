@@ -13,10 +13,11 @@ block content
                     p.authorArticleName= article.authorName
                     .articleCreatedAt= article.createdAt
                 .containerPictureArticle
+                    .pictureInsideArticle
+                        img.imgMain(src=`/img/${article.imageCover}`)
                 .containerArticle
                     article.paragraphArticle!= article.sanitizedHtml
                 - if (user.role === 'admin')
                     .form-group.buttonsAcceptArticle.flex.flex-column
                         a.buttonArticle(href=`/protected/edit/${article.slug}`) Edit
-                        button.deleteArticle(type='button', id='deleteLink')
-                            | Delete
+                        button.deleteArticle(type='button', id='deleteLink') Delete
