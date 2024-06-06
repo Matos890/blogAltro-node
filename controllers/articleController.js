@@ -19,17 +19,46 @@ const multerFilter = (req, file, cb) => {
 const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
 exports.uploadArticleImage = upload.single("imageCover");
 exports.resizeArticlePhoto = async (req, res, next) => {
-  if (!req.file) return next();
+  if (!req.file) {
+    console.log(`non c'è`);
+    return next();
+  }
   req.file.filename = `articleImage-${req.user.id}-${Date.now()}.jpeg`;
   await sharp(req.file.buffer)
     .resize(2000, 1333)
     .toFormat("jpeg")
     .jpeg({ quality: 90 })
-    .toFile("public/img/${req.file.filename}");
+    .toFile(`public/img/${req.file.filename}`);
+    
   next();
 };
 exports.getAllArticles = factory.getAll(Articles);
-exports.createArticle = factory.createOne(Articles);
+exports.createArticle = 
+  catchAsync(async (req, res) => {
+    // console.log(req.body);
+    const article = await Articles.create(req.body);
+  article.imageCover = req.file.filename;
+  article.title = req.body.title;
+  article.subheading = req.body.subheading;
+  article.authorName = req.body.authorName;
+  article.imageCaption = req.body.imageCaption;
+  article.category = req.body.category;
+  article.article = req.body.article;
+
+  const newArticle = await article.save();
+    res
+      .status(201)
+      .set(
+        "Content-Security-Policy",
+        "connect-src 'self' https://cdnjs.cloudflare.com",
+      )
+      .json({
+        status: "success",
+        data: {
+        newArticle,
+        },
+      });
+  });
 exports.deleteArticle = factory.deleteOne(Articles);
 
 exports.updateArticles = factory.updateOne(Articles);
