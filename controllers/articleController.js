@@ -69,7 +69,7 @@ exports.updateArticle = catchAsync(async (req, res, next) => {
     return next(new Error("Articolo non trovato."));
   }
 
-  article.imageCover = req.body.imageCover;
+  article.imageCover = req.file.filename;
   article.title = req.body.title;
   article.subheading = req.body.subheading;
   article.authorName = req.body.authorName;

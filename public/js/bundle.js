@@ -11379,7 +11379,7 @@ _axios.default.defaults.withCredentials = true;
 var thisUrl = window.location.href;
 var slug = thisUrl.split("/").pop();
 var editPage = exports.editPage = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(imageCover, imageCaption, title, subheading, authorName, category, article, summary) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
     var res;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
@@ -11389,16 +11389,7 @@ var editPage = exports.editPage = /*#__PURE__*/function () {
           return (0, _axios.default)({
             method: "PATCH",
             url: "http://localhost:7000/api/v1/articles/edit/".concat(slug),
-            data: {
-              imageCover: imageCover,
-              imageCaption: imageCaption,
-              title: title,
-              subheading: subheading,
-              authorName: authorName,
-              category: category,
-              article: article,
-              summary: summary
-            },
+            data: data,
             headers: {
               "Content-Type": "application/json"
             }
@@ -11423,7 +11414,7 @@ var editPage = exports.editPage = /*#__PURE__*/function () {
       }
     }, _callee, null, [[0, 7]]);
   }));
-  return function editPage(_x, _x2, _x3, _x4, _x5, _x6, _x7, _x8) {
+  return function editPage(_x) {
     return _ref.apply(this, arguments);
   };
 }();
@@ -11675,15 +11666,16 @@ if (logoutButton) logoutButton.addEventListener("click", _login.logout);
 /////// EDIT ARTICLE
 if (editArticle) editArticle.addEventListener("submit", function (e) {
   e.preventDefault();
-  imageCover = imageCover.value;
-  imageCaption = imageCaption.value;
-  title = title.value;
-  subheading = subheading.value;
-  authorName = authorName.value;
-  category = category.value;
-  article = article.value;
-  summary = summary.value;
-  (0, _editArticle.editPage)(imageCover, imageCaption, title, subheading, authorName, category, article, summary);
+  var form = new FormData();
+  form.append("imageCover", imageCover.files[0]);
+  form.append("imageCaption", imageCaption.value);
+  form.append("title", title.value);
+  form.append("subheading", subheading.value);
+  form.append("authorName", authorName.value);
+  form.append("category", category.value);
+  form.append("article", article.value);
+  form.append("summary", summary.value);
+  (0, _editArticle.editPage)(form);
   console.log("eddai");
 });
 /////DELETE ARTICLE
@@ -11743,7 +11735,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41567" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "39101" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

@@ -69,24 +69,16 @@ if (logoutButton) logoutButton.addEventListener("click", logout);
 if (editArticle)
   editArticle.addEventListener("submit", (e) => {
     e.preventDefault();
-    imageCover = imageCover.value;
-    imageCaption = imageCaption.value;
-    title = title.value;
-    subheading = subheading.value;
-    authorName = authorName.value;
-    category = category.value;
-    article = article.value;
-    summary = summary.value;
-    editPage(
-      imageCover,
-      imageCaption,
-      title,
-      subheading,
-      authorName,
-      category,
-      article,
-      summary,
-    );
+    const form = new FormData();
+    form.append("imageCover", imageCover.files[0]);
+    form.append("imageCaption", imageCaption.value);
+    form.append("title", title.value);
+    form.append("subheading", subheading.value);
+    form.append("authorName", authorName.value);
+    form.append("category", category.value);
+    form.append("article", article.value);
+    form.append("summary", summary.value);
+    editPage(form);
     console.log("eddai");
   });
 /////DELETE ARTICLE
