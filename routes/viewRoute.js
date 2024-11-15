@@ -6,9 +6,12 @@ const authController = require("./../controllers/authController");
 
 const router = express.Router();
 //HOMEPAGE AND ARTICLES ROUTES
-router.get("/", authController.isLoggedIn, viewController.getOverview);
+router.get("/",  viewController.getOverview);
 
-
+router.get(
+  "/articles/:category/:slug",
+  viewController.getArticle,
+);
 //CREATION AND HANDLING OF USERS
 router
   .route("/users/signup")
@@ -24,11 +27,7 @@ router.get(
   authController.restrict("admin", "writer"),
   viewController.newArticle,
 );
-router.get(
-  "/articles/:category/:slug",
-  authController.isLoggedIn,
-  viewController.getArticle,
-);
+
 router.get('/protected/updateUser',viewController.getUpdateUser)
 router.use(authController.isLoggedIn)
 router.get(
