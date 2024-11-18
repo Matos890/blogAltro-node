@@ -16,12 +16,14 @@ exports.getOverview = catchAsync(async (req, res) => {
 });
 exports.getArticle = catchAsync(async (req, res, next) => {
   const article = await Articles.findOne({ slug: req.params.slug });
+  const user = req.user;
   if (!article) {
     return next(new AppError("there is no such article with that name"), 404);
   }
   res.status(200).render("article", {
     title: article.title,
     article,
+    user
   });
 });
 exports.getPasswordForgot = catchAsync(async (req,res,next)=>{
