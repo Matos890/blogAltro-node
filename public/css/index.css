@@ -1,7 +1,7 @@
 /* reset */
 
 :root {
-  --backgroundMain: #ffffff;
+  --backgroundMain: #f7efe8;
   --fontPrimaryColor: #333333;
   --fontSizeHtml: 10px;
   --fontSizeH1Homepage-1300: 5rem;
@@ -141,11 +141,11 @@ header {
   grid-template-rows: repeat(3, minmax(0, min-content)) 1fr;
   column-gap: 7.28%;
   row-gap: var(--column6-gap-row-1300);
-  padding:2rem;
+  padding:5rem;
 }
 
 .col-4 {
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 5rem;
 }
 .col-12 {
@@ -187,11 +187,11 @@ header {
   z-index: 10;
 }
 .headerWrapper {
-  background-color: #4c6986;
   padding-top:2rem;
   padding-bottom:2rem;
-  border:solid;
   justify-content: space-evenly;
+  width: 100%;
+  display: flex;
 }
 .headerBorder {
   align-items: center;
@@ -206,21 +206,28 @@ header {
 	align-self:center;
   align-items: center;
   flex-wrap: nowrap;
+  width: 100%;
 }
 .contentWrapperLogo{
   display:inline-flex;
   align-self: center;
 }
 .nav__items {
-  font-size: 2rem;
-  color: whitesmoke;
+  font-size: 2.2rem;
+  color: #333;
   align-self:center;
 }
 .logo-image {
   width: 20rem;
   height: 2rem;
-  border: solid;
-  display:inline-block;
+  padding-top:2%;
+  padding-bottom:2%;
+  display:flex;
+ align-items:center;
+ justify-content: center; 
+}
+.altroIcon{
+  height: 150%;
 }
 ul {
   padding: 0;
@@ -270,13 +277,13 @@ section {
   position: relative;
 }
 .mainPageSection {
-  margin-top:5rem;
+  margin-top:2%;
 }
 /*--------------------------*/
 /*    MAIN PAGE ARTICLE     */
 /*--------------------------*/
 .mainContent{
-	border-top:.1rem solid #333333;
+	border-top:.2rem solid #ba2525;
 	border-width: 120%;
 	padding-top:5rem;
 }
@@ -377,7 +384,7 @@ position:relative;
 }
 .titleArticleCollection{
 	align-self: start !important;
-	border-bottom:.1rem solid red;
+	border-bottom:.1rem solid #ba2525;
 	padding-bottom: 2rem;
 }
 .marginControl{
@@ -512,7 +519,7 @@ font-size: var(--fontSizeP-1300);
 	font-size:var(--fontSizeP-1300);
 	border:solid;
 	border-width: 0.2rem;
-	border-color: red;
+	border-color: #ba2525;
 	width:20rem;
 	text-align: center;
 	background-color: white;
@@ -559,7 +566,7 @@ font-size: var(--fontSizeP-1300);
   grid-column:1/-1;
   font-size: 1.7rem;
   font-weight: bold;
-  color:red;
+  color:#ba2525;
   height:fit-content;
   border-bottom:.1rem solid;
   width:80%;
@@ -601,7 +608,7 @@ padding-left:2rem;
 	float:left;
 	margin-right:1rem;
 	position:relative;
-	color:red;
+  color:#ba2525;
   padding-top: 0.9rem;
 }
 .paragraphArticle > h2{
@@ -613,7 +620,7 @@ padding-left:2rem;
 	
   font-size: 1.7rem;
   font-weight: bold;
-  color:red;
+  color:#ba2525;
   border-bottom:.1rem solid;
   width:80%;
 }
@@ -743,6 +750,9 @@ ul {
 	.homePageParagraph{
 		font-size:1.5rem;
 	}
+.altroIcon{
+  height: 200%;
+}
 .headArticle {
   grid-column: 3/-3 !important;
   grid-row: 1/ -1 !important;
@@ -759,7 +769,7 @@ ul {
 }
 .firstArticle {
   grid-row: 1 !important;
-	border-bottom:0.1rem solid red !important;
+	border-bottom:0.1rem solid #ba2525;
 }
 .secondArticle {
   grid-row: 2 !important;
@@ -777,6 +787,9 @@ ul {
   grid-template-rows: repeat(3, auto) 1fr;
   column-gap: 6rem;
   row-gap: var(--column6-gap-row-1300);
+}
+.altroIcon{
+  height: 300%;
 }
 .containerTitleArticle{
   grid-row:2;
@@ -797,7 +810,7 @@ line-height: var( --lineHeightTitle-1300);
 	float:left;
 	margin-right:2rem;
 	position:relative;
-	color:red;
+	color:#ba2525;
   padding-top: 0.9rem;
 }}
 
