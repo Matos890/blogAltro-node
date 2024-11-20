@@ -432,11 +432,15 @@ position:relative;
 /*-------------------------*/
 
 footer {
-  height: 10rem;
+  height: 25vh;
   font-size: 2rem;
+  background-color: #333;
+  color:#fff
 }
 .footer-wrapper {
   justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 .content-footer {
   height: 10rem;

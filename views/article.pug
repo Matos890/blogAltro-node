@@ -17,7 +17,7 @@ block content
                         img.imgMain(src=`/img/${article.imageCover}`)
                 .containerArticle
                     article.paragraphArticle!= article.sanitizedHtml
-                - if (user.role === 'admin')
+                - if (user && user.role === 'admin')
                     .form-group.buttonsAcceptArticle.flex.flex-column
                         a.buttonArticle(href=`/protected/edit/${article.slug}`) Edit
                         button.deleteArticle(type='button', id='deleteLink') Delete
