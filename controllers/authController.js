@@ -85,7 +85,6 @@ exports.logout = (req, res) => {
 ///////////////                  ///////////////
 /////////////////////// ROUTE PROTECTION ///////////////////////
 //////////////                  ///////////////
-
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting token and check of it's there
   let token;
@@ -134,6 +133,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   next();
 });
+
 exports.isLoggedIn = async (req, res, next) => {
   // 1) Getting token and check of it's there
   if (req.cookies.jwt)
@@ -166,6 +166,8 @@ exports.isLoggedIn = async (req, res, next) => {
     }
   next();
 };
+
+
 exports.restrict = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {

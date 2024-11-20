@@ -10,7 +10,7 @@ router.get("/",  viewController.getOverview);
 
 router.get(
   "/articles/:category/:slug",
-  authController.protect,
+  authController.isLoggedIn,
   viewController.getArticle,
 );
 //CREATION AND HANDLING OF USERS
