@@ -10,6 +10,7 @@ router.get("/",  viewController.getOverview);
 
 router.get(
   "/articles/:category/:slug",
+  authController.protect,
   viewController.getArticle,
 );
 //CREATION AND HANDLING OF USERS
@@ -33,7 +34,6 @@ router.use(authController.isLoggedIn)
 router.get(
   "/protected/edit/:slug",
   viewController.getEditPage,
-	
 );
 router.patch("/protected/edit/:slug", viewController.editArticle);
 router.delete(
