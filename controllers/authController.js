@@ -136,38 +136,37 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 
 exports.isLoggedIn = async (req, res, next) => {
-  // 1) Getting token and check of it's there
-  if (req.cookies.jwt)
-    try {
-      {
-        // 2) Verification token
-        const decoded = await promisify(jwt.verify)(
-          req.cookies.jwt,
-          process.env.JWT_SECRET,
-        );
+  try {
+    // 1) Controlla se esiste il token
+    if (req.cookies.jwt) {
+      // 2) Verifica il token
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET
+      );
 
-        // 3) Check if user still exists
-        const currentUser = await User.findById(decoded.id);
-        if (!currentUser) {
-          return next();
-        }
-
-        // 4) Check if user changed password after the token was issued
-        if (currentUser.changedPasswordAfter(decoded.iat)) {
-          return next();
-        }
-
-        // THERE IS A LOGGED IN USER, pug template can use user as variable
-        res.locals.user = currentUser;
-
+      // 3) Controlla se l'utente esiste ancora
+      const currentUser = await User.findById(decoded.id);
+      if (!currentUser || currentUser.changedPasswordAfter(decoded.iat)) {
+        req.user = { role: 'user' }; // Utente non trovato o token scaduto
         return next();
       }
-    } catch {
+
+      // 4) Utente trovato, imposta req.user e res.locals.user
+      req.user = currentUser;
+      res.locals.user = currentUser;
       return next();
     }
-  next();
-};
 
+    // Se non c'è il token
+    req.user = { role: 'user' };
+    return next();
+  } catch (err) {
+    // In caso di errore (es. token non valido)
+    req.user = { role: 'user' };
+    return next();
+  }
+};
 exports.restrict = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {

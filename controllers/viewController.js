@@ -15,8 +15,8 @@ exports.getOverview = catchAsync(async (req, res) => {
 });
 exports.getArticle = catchAsync(async (req, res, next) => {
   const article = await Articles.findOne({ slug: req.params.slug });
-  const user = req.user || {role:'user'};
-  console.log(user.role)
+  const user = req.user  ;
+  console.log(user.role, user.name)
   if (!article) {
     return next(new AppError("there is no such article with that name"), 404);
   }
@@ -58,7 +58,6 @@ exports.getEditPage = catchAsync(async (req, res, next) => {
     title: article.title,
     article,
   });
-  console.log(req.file)
 });
 exports.deleteArticle = factory.deleteOne(Articles);
 exports.editArticle = catchAsync(async (req, res, next) => {

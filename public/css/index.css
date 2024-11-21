@@ -283,7 +283,7 @@ section {
 /*    MAIN PAGE ARTICLE     */
 /*--------------------------*/
 .mainContent{
-	border-top:.2rem solid #ba2525;
+	border-top:.08rem solid #ba2525;
 	border-width: 120%;
 	padding-top:5rem;
 }
