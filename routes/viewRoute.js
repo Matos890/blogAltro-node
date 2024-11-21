@@ -27,6 +27,7 @@ router
 // Rotte protette per la gestione degli articoli
 router.get(
   "/protected/new",
+  authController.protect,
   authController.restrict("admin", "writer"),
   viewController.newArticle
 );
