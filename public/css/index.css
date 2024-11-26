@@ -140,7 +140,7 @@ header {
   column-gap: 7.28%;
   row-gap: var(--column6-gap-row-1300);
   padding-top: 5rem;
-  padding-left:2rem;
+  padding-left: 2rem;
   padding-right: 2rem;
 }
 
@@ -344,6 +344,7 @@ section {
 .headArticle {
   grid-column: 2/6;
   grid-row: 1;
+  margin-bottom:3rem;
 }
 .sideArticle {
   justify-content: space-between;
@@ -381,7 +382,7 @@ section {
 }
 .containerText,
 .containerTextS2 > h2 {
-  align-self: center;
+  align-self: start;
 }
 .headArticle {
   width: 100%;
@@ -434,7 +435,7 @@ section {
   justify-content: center;
   align-items: center;
   margin-top: 5rem !important;
-  width: 75%;
+  width: 90%;
 }
 .titleArticleCollection {
   align-self: start !important;
@@ -480,7 +481,7 @@ section {
 .titleSections {
   font-size: 5rem;
   font-weight: bold;
-  border-top: 0.2rem solid rgba(0, 0, 0, 0.5);
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.5);
   margin-bottom: 2rem;
   color: #ba2525;
 }
@@ -545,6 +546,7 @@ footer {
   font-size: 5rem;
   font-weight: 450;
   margin-top: 2rem;
+  text-align: center;
 }
 input {
   width: 100%;
@@ -842,11 +844,12 @@ articleCreatedAt {
     flex-direction: column;
     justify-content: start;
   }
-.contentInnerWrapper{
-  width: 75%;
-.contentInnerWrapper{
-  width: 75%;
-}}
+  .contentInnerWrapper {
+    width: 75%;
+    .contentInnerWrapper {
+      width: 75%;
+    }
+  }
   .containerPictureHead {
     border: solid;
     border-width: 0.02rem;
@@ -866,6 +869,10 @@ articleCreatedAt {
   .headArticle {
     grid-column: 3/-3 !important;
     grid-row: 1/ -1 !important;
+    margin-bottom: unset;
+  }
+  .titleSubmitArticle{
+    text-align: unset;
   }
   .secondArticle {
     grid-row: 2 !important;
@@ -899,7 +906,7 @@ content: " ";
     width: 1px;
     height: 20rem;
   } */
-   /* .containerTitleArticle{
+  /* .containerTitleArticle{
     border-top:solid;
     color: rgba(0, 0, 0, 0.5);
    } */
@@ -946,6 +953,13 @@ content: " ";
   height: 100%;
 } */
 
+  .SecondPageArticleLists {
+    width: 75%;
+  }
+  .titleSections{
+    border-bottom: unset;
+    border-top:0.2rem solid rgba(0, 0, 0, 0.5);
+  }
   /*              ARTICLE               */
 
   .col-6-row-3-1300 {
