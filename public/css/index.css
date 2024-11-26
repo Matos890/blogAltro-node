@@ -216,21 +216,21 @@ header {
   align-self: center;
 }
 .nav__items {
-  font-size: 2.2rem;
+  font-size: 1.7rem;
   font-style: italic;
   color: #333;
   align-self: center;
   background-color: #f7efe8;
   z-index: 3;
-  padding-right: 3rem;
-  padding-left: 3rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
   position: relative;
 }
 .prettyLine {
   position: absolute;
   height: 0.1rem;
   background-color: #ba2525;
-  width: 50%;
+  width: 0%;
   top: 50%;
 }
 /* .nav__items:after{
@@ -243,7 +243,7 @@ content: "";
   top: 50%;
 } */
 .logo-image {
-  width: 20rem;
+  width: 100%;
   height: 2rem;
   padding-top: 2%;
   padding-bottom: 2%;
@@ -252,8 +252,6 @@ content: "";
   z-index: 6;
   position: relative;
   background-color: #f7efe8;
-  padding-right: 3rem;
-  padding-left: 3rem;
   justify-content: center;
 }
 .altroIcon {
@@ -263,9 +261,9 @@ ul {
   padding: 0;
   display: flex;
   align-items: center;
-  width: 75%;
+  width: 90%;
   justify-content: space-evenly;
-  flex-direction: column;
+  flex-direction: row;
 }
 .navWrapper {
   width: 100%;
@@ -344,7 +342,7 @@ section {
 .headArticle {
   grid-column: 2/6;
   grid-row: 1;
-  margin-bottom:3rem;
+  margin-bottom: 3rem;
 }
 .sideArticle {
   justify-content: space-between;
@@ -758,6 +756,10 @@ articleCreatedAt {
     grid-template-rows: 1fr repeat(4, min-content);
     column-gap: 10px;
   }
+  .logo-image {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
   .containerPictureHead {
     border: solid;
     border-width: 0.02rem;
@@ -785,9 +787,6 @@ articleCreatedAt {
   .sideArticle {
     display: flex;
     flex-direction: row;
-  }
-  .homePageParagraph {
-    font-size: 1.4rem;
   }
   /* ARTICLES */
   .containerTitleArticle {
@@ -829,15 +828,17 @@ articleCreatedAt {
 
 /*--------------- 740px ------------------*/
 @media (min-width: 740px) {
-  ul {
-    flex-direction: row;
-    width: 75%;
+  .logo-image {
+    width: 20rem;
   }
   .form-groupHeader {
     margin-left: 90%;
   }
   .mainContent {
     display: grid;
+  }
+  .prettyLine{
+    width: 60%;
   }
   .mainContent > * {
     display: flex;
@@ -860,9 +861,6 @@ articleCreatedAt {
     grid-template-rows: repeat(3, min-content);
     column-gap: 4.22rem;
   }
-  .homePageParagraph {
-    font-size: 1.5rem;
-  }
   .altroIcon {
     height: 200%;
   }
@@ -871,7 +869,7 @@ articleCreatedAt {
     grid-row: 1/ -1 !important;
     margin-bottom: unset;
   }
-  .titleSubmitArticle{
+  .titleSubmitArticle {
     text-align: unset;
   }
   .secondArticle {
@@ -956,9 +954,9 @@ content: " ";
   .SecondPageArticleLists {
     width: 75%;
   }
-  .titleSections{
+  .titleSections {
     border-bottom: unset;
-    border-top:0.2rem solid rgba(0, 0, 0, 0.5);
+    border-top: 0.2rem solid rgba(0, 0, 0, 0.5);
   }
   /*              ARTICLE               */
 
@@ -971,7 +969,7 @@ content: " ";
     row-gap: var(--column6-gap-row-1300);
   }
   .altroIcon {
-    height: 400%;
+    height: 250%;
   }
   .containerTitleArticle {
     grid-row: 2;
@@ -1013,7 +1011,25 @@ content: " ";
     width: 10rem;
     font-size: 2rem;
   }
+  .logo-image{
+    width: 20rem;
+    padding-left:3rem;
+    padding-right:3rem;
+  }
 
+  .altroIcon {
+    height: 400%;
+  }
+  ul {
+    width: 75%;
+    padding-right: 3rem;
+    padding-left: 3rem;
+  }
+  .nav__items {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-size: 2.2rem;
+  }
   /* HOMEPAGE */
   .col-8-1300 {
     min-width: 960px;
@@ -1026,7 +1042,6 @@ content: " ";
     gap: 3rem;
   }
   .homePageParagraph {
-    font-size: 1.7rem;
     line-height: 2.5rem;
     margin-top: 0.8rem;
   }
