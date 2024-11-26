@@ -942,7 +942,7 @@ content: " ";
     row-gap: var(--column6-gap-row-1300);
   }
   .altroIcon {
-    height: 350%;
+    height: 400%;
   }
   .containerTitleArticle {
     grid-row: 2;
