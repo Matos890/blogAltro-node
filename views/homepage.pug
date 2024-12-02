@@ -6,7 +6,7 @@ block content
 						.borderLeftColumn 
 						.borderRightColumn
 						a.headArticle(href=`/articles/${articles[articles.length -1].category}/${articles[articles.length -1].slug}`) 
-							.headArticle
+							.head
 								
 								.containerPictureHead
 									.pictureInsideText
@@ -35,26 +35,8 @@ block content
 									h2=articles[articles.length -3].title 
 									p(class='homePageParagraph')=articles[articles.length -3].subheading 
 
-						a.sideArticle.rightArticle.firstArticle.articleTre(href=`/articles/${articles[articles.length -4].category}/${articles[articles.length -4].slug}`) 
-							aside
-								.containerPicture
-									.pictureInsideLateral
-										img.imgMain(src=`/img/${articles[articles.length -4].imageCover}`)
-								.containerText
-
-									h2=articles[articles.length -4].title 
-									p(class='homePageParagraph')=articles[articles.length -4].subheading 
 									
 								
-						a.sideArticle.rightArticle.secondArticle.articleCinque(href=`/articles/${articles[articles.length -1].category}/${articles[articles.length -1].slug}`) 
-							aside
-								.containerPicture
-									.pictureInsideLateral
-										img.imgMain(src='/img/meloni.jpeg')
-								.containerText
-
-									h2 Side Article 4 
-									p(class='homePageParagraph') this article is supposed to stay in the right side of the page. It is in the  second row.
 			section.SecondPageArticleLists.flex
 				.marginControl.flex
 						h1.titleSections  Posts
