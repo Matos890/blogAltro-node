@@ -3,7 +3,8 @@ block content
 			section.mainPageSection.flex
 				.contentInnerWrapper.flex
 					.mainContent.col-8-1300 
-
+						.borderLeftColumn 
+						.borderRightColumn
 						a.headArticle(href=`/articles/${articles[articles.length -1].category}/${articles[articles.length -1].slug}`) 
 							.headArticle
 								
@@ -13,9 +14,9 @@ block content
 										img.imgMain(src=`/img/${articles[articles.length - 1].imageCover}`)
 								.containerText
 									h1.titleSubmitArticle=articles[articles.length -1].title
-									p(class="homePageParagraph")=articles[articles.length -1].summary 
+									p(class="homePageParagraph")=articles[articles.length -1].subheading 
 
-						a.sideArticle.leftArticle.firstArticle(href=`/articles/${articles[articles.length -2].category}/${articles[articles.length -2].slug}`) 
+						a.sideArticle.leftArticle.firstArticle.articleUno(href=`/articles/${articles[articles.length -2].category}/${articles[articles.length -2].slug}`) 
 							aside
 								.containerPicture
 									.pictureInsideLateral
@@ -23,18 +24,18 @@ block content
 										img.imgMain(src=`/img/${articles[articles.length -2].imageCover}`)
 								.containerText
 									h2=articles[articles.length -2].title 
-									p(class='homePageParagraph')=articles[articles.length -2].summary 
+									p(class='homePageParagraph')=articles[articles.length -2].subheading 
 
-						a.sideArticle.leftArticle.secondArticle(href=`/articles/${articles[articles.length -3].category}/${articles[articles.length -3].slug}`) 
+						a.sideArticle.leftArticle.secondArticle.articleDue(href=`/articles/${articles[articles.length -3].category}/${articles[articles.length -3].slug}`) 
 							aside
 								.containerPicture
 									.pictureInsideLateral
 										img.imgMain(src=`/img/${articles[articles.length -3].imageCover}`)
 								.containerText
 									h2=articles[articles.length -3].title 
-									p(class='homePageParagraph')=articles[articles.length -3].summary 
+									p(class='homePageParagraph')=articles[articles.length -3].subheading 
 
-						a.sideArticle.rightArticle.firstArticle(href=`/articles/${articles[articles.length -4].category}/${articles[articles.length -4].slug}`) 
+						a.sideArticle.rightArticle.firstArticle.articleTre(href=`/articles/${articles[articles.length -4].category}/${articles[articles.length -4].slug}`) 
 							aside
 								.containerPicture
 									.pictureInsideLateral
@@ -42,10 +43,10 @@ block content
 								.containerText
 
 									h2=articles[articles.length -4].title 
-									p(class='homePageParagraph')=articles[articles.length -4].summary 
+									p(class='homePageParagraph')=articles[articles.length -4].subheading 
 									
 								
-						a.sideArticle.rightArticle.secondArticle(href=`/articles/${articles[articles.length -1].category}/${articles[articles.length -1].slug}`) 
+						a.sideArticle.rightArticle.secondArticle.articleCinque(href=`/articles/${articles[articles.length -1].category}/${articles[articles.length -1].slug}`) 
 							aside
 								.containerPicture
 									.pictureInsideLateral
@@ -58,18 +59,17 @@ block content
 				.marginControl.flex
 						h1.titleSections  Posts
 						.articleCollectionCentered.grid.col-4
-						
-							each article in articles
-								a(href=`/articles/${article.category}/${article.slug}`) 
+							- for( let i = 0; i < articles.length - 4; i++)	
+								a(href=`/articles/${articles[i].category}/${articles[i].slug}`) 
 									.containerArticleCollection.flex.flex-column
 										.containerPictureSecondSectionHome
 											.pictureInsideSecondSection
 												
-												img.imgMain(src=`/img/${article.imageCover}`)
+												img.imgMain(src=`/img/${articles[i].imageCover}`)
 										.containerTextS2
 
-											h2.titleArticleCollection=article.title  
-											p(class='homePageParagraph')!=article.summary
+											h2.titleArticleCollection=articles[i].title  
+											p(class='homePageParagraph')!=articles[i].subheading
 			section.SecondPageArticleLists.flex
 				.marginControl.flex
 						h1.titleSections Interactive Content 
