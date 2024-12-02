@@ -884,8 +884,8 @@ option:hover {
   .col-8-1300 {
     min-width: 740px;
     grid-template-columns: repeat(8, 5.5rem);
-    grid-template-rows: repeat(3, min-content);
-    column-gap: 4.22rem;
+    grid-template-rows: repeat(2, auto);
+    column-gap: 5rem;
   }
   .altroIcon {
     height: 200%;
@@ -979,6 +979,8 @@ option:hover {
     color: #ba2525;
     padding-top: 0.9rem;
   }
+  /* NEW GRID */ 
+
 }
 
 /*--------------- 960px ------------------*/
