@@ -848,8 +848,7 @@ option:hover {
     justify-content: start;
   }
   .contentInnerWrapper {
-    width: 75%;
-    margin-top: 5rem;
+    width: 100%;
   }
   .col-8-1300 {
     min-width: 740px;
