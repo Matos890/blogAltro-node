@@ -126,6 +126,7 @@ a:hover {
   z-index: 5;
   padding: 3% 12.5% 3% 12.5%;
   top: -3%;
+  opacity: .9;
 }
 /*****************/
 /* LAYOUT DESIGN *
@@ -244,6 +245,7 @@ ul {
   list-style-type: none; /* Rimuove il pallino */
   padding: 0; /* Opzionale: rimuove il padding sinistro */
   margin: 0; /* Opzionale: rimuove il margine */
+
 }
 
 .nav__items {
@@ -297,8 +299,8 @@ ul {
   padding: 0;
   display: flex;
   align-items: center;
-  width: 90%;
-  justify-content: space-evenly;
+  width: 75%;
+  justify-content: space-between;
   flex-direction: row;
 }
 .navWrapper {
@@ -909,7 +911,7 @@ option:hover {
     display: grid;
   }
   .prettyLine {
-    width: 60%;
+    width: 75%;
   }
   .mainContent > * {
     display: flex;
@@ -1064,12 +1066,19 @@ option:hover {
 
   ul {
     width: 75%;
+
   }
   .nav__items {
     padding-left: 3rem;
     padding-right: 3rem;
     font-size: 2.8rem;
   }
+/* .nav__items:nth-of-type(1){
+  padding-left: 0;
+}
+.nav__items:nth-of-type(5){
+  padding-left: 0;
+} */
   /* HOMEPAGE */
   .col-8-1300 {
     min-width: 960px;
