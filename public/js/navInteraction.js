@@ -1,19 +1,20 @@
-const nav = document.querySelector('nav');
+const nav = document.querySelector("nav");
 console.log("hello");
 export function navSticky() {
+  const siblings = document.querySelectorAll(".nav__link");
+  // Opacity
   const handleHover = function (e) {
     if (e.target.classList.contains("nav__link")) {
       const link = e.target;
-      const siblings = document.querySelectorAll(".nav__link");
       //passing arguments this.
       siblings.forEach((el) => {
         if (el != link) el.style.opacity = this;
       });
-      logo.style.opacity = this;
     }
   };
   nav.addEventListener("mouseover", handleHover.bind(0.2));
   nav.addEventListener("mouseout", handleHover.bind(1));
+  ///sticky
   const header = document.querySelector("header");
   const navWrapper = document.querySelector(".navToStylize");
   const mainContent = document.querySelector(".mainContent");
@@ -35,4 +36,21 @@ export function navSticky() {
     rootMargin: `${window.innerHeight}px`, //accept only px
   });
   headerObserver.observe(header);
+  //Afters and befores to be activated
+  let titleSection = document.querySelector('section');
+
+
+  console.log('eccomi',titleSection)
+if(nav){
+  siblings.forEach((element)=>{
+    console.log(element.innerHTML)
+    console.log(element.classList.contains(titleSection))
+    if(titleSection.classList.contains(element.innerHTML.trim())){
+      console.log('is true')
+      element.classList.add('isActivated')
+    }
+  else{
+    element.classList.remove('isActivated')
+  }
+  })}
 }

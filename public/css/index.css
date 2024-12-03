@@ -155,6 +155,9 @@ a {
   text-decoration: none;
   color: unset;
 }
+.Home{
+  display: flex;
+}
 .mainContent a {
   text-decoration: none;
   color: unset;
@@ -261,7 +264,7 @@ ul {
 .prettyLine {
   position: absolute;
   height: 0.1rem;
-  background-color: rgb(187, 39, 39);
+  background-color:rgb(247, 90, 33);
   width: 0%;
   top: 50%;
   opacity: 0.5;
@@ -311,11 +314,30 @@ nav {
 }
 .nav__link {
   position: relative;
+
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.nav__link::before {
+.isActivated{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color:#ba2525;
+}
+.isActivated::before{
+content: "";
+background-image: url("/img/fleuronLateralLeft-01.png");
+background-size: cover;
+background-position: center;
+width: 45px;
+height: 18px;
+opacity: 0.5;
+margin-right: 1rem;
+
+}
+.isActivated::after{
+
   content: "";
   background-image: url("/img/fleuronLateralLeft-01.png");
   background-size: cover;
@@ -323,8 +345,10 @@ nav {
   width: 45px;
   height: 18px;
   opacity: 0.5;
+  margin-left: 1rem;
+  transform: rotate3d(0, 1, 0, -180deg);
 }
-.nav__link::after {
+/* .nav__link::before {
   content: "";
   background-image: url("/img/fleuronLateralLeft-01.png");
   background-size: cover;
@@ -332,7 +356,8 @@ nav {
   width: 45px;
   height: 18px;
   opacity: 0.5;
-}
+  margin-right: 1rem;
+} */
 
 .form-groupHeader {
   top: 4.5rem;
@@ -673,6 +698,10 @@ option:hover {
 /*-----------------------*/
 /*       ARTICLES        */
 /*-----------------------*/
+.Articles{
+  display: flex;
+  flex-direction: column;
+}
 .contentArticleWrapper {
   flex-wrap: wrap;
   justify-content: center;

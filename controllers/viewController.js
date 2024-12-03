@@ -9,7 +9,7 @@ const { default: slugify } = require("slugify");
 exports.getOverview = catchAsync(async (req, res) => {
   const articles = await Articles.find();
   res.status(200).render("homepage", {
-    title: "Altro | Homepage",
+    title: "Altro | Home",
     articles,
   });
 });

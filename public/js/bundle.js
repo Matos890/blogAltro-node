@@ -11487,23 +11487,24 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-var nav = document.querySelector('nav');
+var nav = document.querySelector("nav");
 console.log("hello");
 function navSticky() {
+  var siblings = document.querySelectorAll(".nav__link");
+  // Opacity
   var handleHover = function handleHover(e) {
     var _this = this;
     if (e.target.classList.contains("nav__link")) {
       var link = e.target;
-      var siblings = document.querySelectorAll(".nav__link");
       //passing arguments this.
       siblings.forEach(function (el) {
         if (el != link) el.style.opacity = _this;
       });
-      logo.style.opacity = this;
     }
   };
   nav.addEventListener("mouseover", handleHover.bind(0.2));
   nav.addEventListener("mouseout", handleHover.bind(1));
+  ///sticky
   var header = document.querySelector("header");
   var navWrapper = document.querySelector(".navToStylize");
   var mainContent = document.querySelector(".mainContent");
@@ -11526,6 +11527,21 @@ function navSticky() {
     rootMargin: "".concat(window.innerHeight, "px") //accept only px
   });
   headerObserver.observe(header);
+  //Afters and befores to be activated
+  var titleSection = document.querySelector('section');
+  console.log('eccomi', titleSection);
+  if (nav) {
+    siblings.forEach(function (element) {
+      console.log(element.innerHTML);
+      console.log(element.classList.contains(titleSection));
+      if (titleSection.classList.contains(element.innerHTML.trim())) {
+        console.log('is true');
+        element.classList.add('isActivated');
+      } else {
+        element.classList.remove('isActivated');
+      }
+    });
+  }
 }
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
@@ -11799,7 +11815,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53236" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51152" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
