@@ -14,7 +14,7 @@ import {
 import { submitNewArticleJs } from "./newArticle.js";
 import { editPage } from "./editArticle.js";
 import { deleteThisArticle } from "./deleteArticle.js";
-
+import { navSticky} from "./navInteraction.js"
 ///////////////                    ///////////////
 /////////////////////// HTML ELEMENTS ///////////////////////
 //////////////                    ///////////////
@@ -35,6 +35,18 @@ let article = document.getElementById("article");
 let authorName = document.getElementById("authorName");
 let imageCaption = document.getElementById("imageCaption");
 let subheading = document.getElementById("subheading");
+const nav = document.querySelector('nav')
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (nav) {
+        console.log('ciao');
+        navSticky()
+    }
+    else
+    {
+    console.log('yo')  
+    }
+});
 ///////////////                    ///////////////
 /////////////////////// ACTIONS IMPLEMENTATIONS ///////////////////////
 //////////////                    ///////////////
@@ -120,3 +132,4 @@ if (updatePasswordForm)
     console.log("ciao");
     updatePassword(currentPassword, passwordNew, passwordNewConfirm);
   });
+//////////STICKY MENU////////////

@@ -6,14 +6,23 @@ header
       .navWrapper
         nav
           ul.garamond.navToStylize
-            span.navItems.nav__items About Me
-            span.navItems.nav__items Literature
-            span.navItems
+            .navItems
+              li.nav__items 
+                a(href="/").nav__link Home
+            .navItems
+              li.nav__items  
+                a(href="/").nav__link About Me
+            .navItems
+            li
 
               a(href="/").logo-image
-                img(class='altroIcon' src="/img/AltroIconRed-01.png", alt="")
-            span.navItems.nav__items Tech 
-            span.navItems.nav__items Culture
+                img(class='altroIcon' src="/img/AltroIconRed-02-01.png", alt="")
+            .navItems
+              li.nav__items  
+                a(href="/").nav__link Archive
+            .navItems
+              li.nav__items 
+                a(href="/").nav__link Interactive
         .prettyLine
 
     - if (user)

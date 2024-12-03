@@ -119,6 +119,14 @@ a:hover {
   white-space: nowrap;
   border: 0;
 }
+
+.sticky {
+  position: fixed;
+  background-color: #f7efe8;
+  z-index: 5;
+  padding: 3% 12.5% 3% 12.5%;
+  top: -3%;
+}
 /*****************/
 /* LAYOUT DESIGN *
 /****************/
@@ -229,6 +237,12 @@ header {
   display: inline-flex;
   align-self: center;
 }
+ul {
+  list-style-type: none; /* Rimuove il pallino */
+  padding: 0; /* Opzionale: rimuove il padding sinistro */
+  margin: 0; /* Opzionale: rimuove il margine */
+}
+
 .nav__items {
   font-size: 1.7rem;
   font-style: italic;
@@ -240,12 +254,17 @@ header {
   padding-left: 1rem;
   position: relative;
 }
+.nav__items a:hover {
+  text-decoration: underline;
+  color: inherit;
+}
 .prettyLine {
   position: absolute;
   height: 0.1rem;
-  background-color: black;
+  background-color: rgb(187, 39, 39);
   width: 0%;
   top: 50%;
+  opacity: 0.5;
 }
 /* .nav__items:after{
 content: "";
@@ -290,6 +309,20 @@ nav {
   justify-content: center;
   width: 100%;
 }
+.nav__link {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.nav__link::before {
+content: " ";
+  background-image: url("/img/fleuronBlack-01.png");
+  background-size: cover;
+  background-position: center;
+align-self: center;width: 60px;
+  height: 25px;
+}
+
 .form-groupHeader {
   top: 4.5rem;
   position: absolute;
@@ -759,10 +792,6 @@ option:hover {
     grid-template-rows: 1fr repeat(4, min-content);
     column-gap: 10px;
   }
-  .logo-image {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
   .headArticle {
     grid-column: 2/6;
     grid-row: 1;
@@ -941,8 +970,13 @@ option:hover {
     column-gap: 6rem;
     row-gap: var(--column6-gap-row-1300);
   }
+
   .altroIcon {
-    height: 250%;
+    height: 100%;
+    scale: 4;
+  }
+  .altroIconSticky {
+    scale: 2;
   }
   .containerTitleArticle {
     grid-row: 2;
@@ -986,22 +1020,15 @@ option:hover {
   }
   .logo-image {
     width: 20rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
   }
 
-  .altroIcon {
-    height: 400%;
-  }
   ul {
     width: 75%;
-    padding-right: 3rem;
-    padding-left: 3rem;
   }
   .nav__items {
     padding-left: 3rem;
     padding-right: 3rem;
-    font-size: 2.2rem;
+    font-size: 2.8rem;
   }
   /* HOMEPAGE */
   .col-8-1300 {
