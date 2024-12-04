@@ -434,7 +434,7 @@ section {
 .containerText {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 90%;
 }
 .head > .containerText {
   display: flex;
@@ -446,7 +446,9 @@ section {
   flex-direction: column;
   width: 100%;
 }
-.containerText,
+.containerText{
+  align-self: center;
+}
 .containerTextS2 > h2 {
   align-self: start;
 }
@@ -461,7 +463,7 @@ section {
   color: #444;
 }
 .containerPicture {
-  width: 50%;
+  width: 90%;
   margin-bottom: 1rem;
   height: fit-content;
 }
@@ -519,10 +521,13 @@ section {
   position: relative;
 }
 aside {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  margin-bottom: 5rem;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-bottom: 5rem;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 .sideArticle:nth-of-type(1):before {
   content: " ";
