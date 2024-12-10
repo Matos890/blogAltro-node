@@ -25,6 +25,26 @@ header
                 a(href="/").nav__link Interactive
             .prettyLine
 
+        nav.smallScreen
+          .navItems.logoSmallScreen
+               li
+
+                a(href="/").logo-image
+                  img(class='altroIcon' src="/img/AltroIconRed-02-01.png", alt="")
+          ul.garamond.navToStylize.ulSmall
+            .navItems
+              li.nav__items.navItemsSmall
+                a(href="/").nav__link Home
+            .navItems
+              li.nav__items.navItemsSmall  
+                a(href="/").nav__link About Me
+            .navItems
+              li.nav__items.navItemsSmall  
+                a(href="/").nav__link Articles 
+            .navItems
+              li.nav__items.navItemsSmall
+                a(href="/").nav__link Interactive
+            .prettyLine
     - if (user)
       .form-groupHeader.buttonsAccept.flex.flex-column
         button(class='buttonLogout') 

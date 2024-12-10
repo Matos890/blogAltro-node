@@ -126,7 +126,7 @@ a:hover {
   z-index: 5;
   padding: 3% 12.5% 3% 12.5%;
   top: -3%;
-  opacity: .9;
+  opacity: 0.9;
 }
 /*****************/
 /* LAYOUT DESIGN *
@@ -156,7 +156,7 @@ a {
   text-decoration: none;
   color: unset;
 }
-.Home{
+.Home {
   display: flex;
 }
 .mainContent a {
@@ -245,7 +245,6 @@ ul {
   list-style-type: none; /* Rimuove il pallino */
   padding: 0; /* Opzionale: rimuove il padding sinistro */
   margin: 0; /* Opzionale: rimuove il margine */
-
 }
 
 .nav__items {
@@ -266,7 +265,7 @@ ul {
 .prettyLine {
   position: absolute;
   height: 0.1rem;
-  background-color:rgb(247, 90, 33);
+  background-color: rgb(247, 90, 33);
   width: 0%;
   top: 50%;
   opacity: 0.5;
@@ -321,25 +320,23 @@ nav {
   flex-direction: row;
   align-items: center;
 }
-.isActivated{
+.isActivated {
   display: flex;
   flex-direction: row;
   align-items: center;
-  color:#ba2525;
+  color: #ba2525;
 }
-.isActivated::before{
-content: "";
-background-image: url("/img/fleuronLateralLeft-01.png");
-background-size: cover;
-background-position: center;
-width: 45px;
-height: 18px;
-opacity: 0.5;
-margin-right: 1rem;
-
+.isActivated::before {
+  content: "";
+  background-image: url("/img/fleuronLateralLeft-01.png");
+  background-size: cover;
+  background-position: center;
+  width: 45px;
+  height: 18px;
+  opacity: 0.5;
+  margin-right: 1rem;
 }
-.isActivated::after{
-
+.isActivated::after {
   content: "";
   background-image: url("/img/fleuronLateralLeft-01.png");
   background-size: cover;
@@ -446,7 +443,7 @@ section {
   flex-direction: column;
   width: 100%;
 }
-.containerText{
+.containerText {
   align-self: center;
 }
 .containerTextS2 > h2 {
@@ -521,13 +518,13 @@ section {
   position: relative;
 }
 aside {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	margin-bottom: 5rem;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .sideArticle:nth-of-type(1):before {
   content: " ";
@@ -705,7 +702,7 @@ option:hover {
 /*-----------------------*/
 /*       ARTICLES        */
 /*-----------------------*/
-.Articles{
+.Articles {
   display: flex;
   flex-direction: column;
 }
@@ -843,6 +840,15 @@ option:hover {
     grid-column: 2/6;
     grid-row: 1;
   }
+  ul {
+    width: 90%;
+  }
+  .altroIcon {
+    scale: 2;
+  }
+  .prettyLine {
+    width: 90%;
+  }
   /* .sideArticle:nth-of-type(1) {
     grid-row: 2;
     grid-column: 2/6;
@@ -903,11 +909,33 @@ option:hover {
 
 /*--------------- 740px ------------------*/
 @media (min-width: 800px) {
+.smallScreen{
+  display: none !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.logoSmallScreen{
+  align-self: center;
+  list-style: none;
+}
+.ulSmall{
+  width: 70%;
+  position: relative;
+  margin-top: 3%;
+}
+.navItemsSmall{
+  font-size:2.2rem;
+}
   aside {
     display: unset;
   }
   .logo-image {
     width: 20rem;
+  }
+  ul {
+    width: 90%;
   }
   .form-groupHeader {
     margin-left: 90%;
@@ -916,7 +944,7 @@ option:hover {
     display: grid;
   }
   .prettyLine {
-    width: 75%;
+    width: 90%;
   }
   .mainContent > * {
     display: flex;
@@ -1020,7 +1048,7 @@ option:hover {
 
   .altroIcon {
     height: 100%;
-    scale: 4;
+    scale: 3.5;
   }
   .altroIconSticky {
     scale: 2;
@@ -1068,17 +1096,19 @@ option:hover {
   .logo-image {
     width: 20rem;
   }
+  .prettyLine {
+    width: 90%;
+  }
 
   ul {
-    width: 75%;
-
+    width: 90%;
   }
   .nav__items {
     padding-left: 3rem;
     padding-right: 3rem;
-    font-size: 2.8rem;
+    font-size: 2.2rem;
   }
-/* .nav__items:nth-of-type(1){
+  /* .nav__items:nth-of-type(1){
   padding-left: 0;
 }
 .nav__items:nth-of-type(5){
@@ -1139,6 +1169,18 @@ option:hover {
 
 /* ----------- 1300 --------------- px */
 @media (min-width: 1300px) {
+  ul {
+    width: 75%;
+  }
+  .nav__items {
+    font-size: 2.8rem;
+  }
+  .prettyLine {
+    width: 75%;
+  }
+  .altroIcon {
+    scale: 4;
+  }
   .col-8-1300 {
     min-width: 1300px;
     grid-template-columns: repeat(8, var(--column8-column-1300));
