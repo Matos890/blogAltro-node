@@ -17,6 +17,7 @@ export function navSticky() {
   ///sticky
   const header = document.querySelector("header");
   const navWrapper = document.querySelector(".navToStylize");
+const navSmallScreen = document.querySelector(".smallScreen");
   const mainContent = document.querySelector(".mainContent");
   const navHeight = navWrapper.getBoundingClientRect().height;
   const altroIcon = document.querySelector(".altroIcon");
@@ -53,4 +54,6 @@ if(nav){
     element.classList.remove('isActivated')
   }
   })}
+  /// NAV Small screen
+  
 }

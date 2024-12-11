@@ -1,7 +1,7 @@
 /* reset */
 
 :root {
-  --backgroundMain: #f7efe8;
+  --backgroundMain:  rgb(251, 247, 227);
   --fontPrimaryColor: #333333;
   --fontSizeHtml: 10px;
   --fontSizeH1Homepage-1300: 5rem;
@@ -21,6 +21,7 @@
   --column6-row-1300: 20rem;
   --column6-gap-column-1300: 2rem;
   --column6-gap-row-1300: 1.5rem;
+  --oldBackgroundColor: #f7efe8;
 }
 body,
 h1,
@@ -252,7 +253,7 @@ ul {
   font-style: italic;
   color: #333;
   align-self: center;
-  background-color: #f7efe8;
+  background-color: var(--backgroundMain);
   z-index: 3;
   padding-right: 1rem;
   padding-left: 1rem;
@@ -288,7 +289,7 @@ content: "";
   align-items: center;
   z-index: 6;
   position: relative;
-  background-color: #f7efe8;
+  background-color: var(--backgroundMain);
   justify-content: center;
 }
 .altroIcon {
@@ -309,7 +310,7 @@ ul {
   position: relative;
 }
 nav {
-  display: inline-flex;
+  /* display: inline-flex; */
   justify-content: center;
   width: 100%;
 }
@@ -840,8 +841,30 @@ option:hover {
     grid-column: 2/6;
     grid-row: 1;
   }
+
+  .smallScreen {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3%;
+  }
+
+  .logoSmallScreen {
+    align-self: center;
+    list-style: none;
+  }
+  .ulSmall {
+    width: 90%;
+    position: relative;
+    margin-top: 5%;
+  }
+  .navItemsSmall {
+    font-size: 2.2rem;
+  }
   ul {
     width: 90%;
+  }
+  .sticky{
+    position: fixed !important;
   }
   .altroIcon {
     scale: 2;
@@ -909,25 +932,22 @@ option:hover {
 
 /*--------------- 740px ------------------*/
 @media (min-width: 800px) {
-.smallScreen{
-  display: none !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-}
-.logoSmallScreen{
-  align-self: center;
-  list-style: none;
-}
-.ulSmall{
-  width: 70%;
-  position: relative;
-  margin-top: 3%;
-}
-.navItemsSmall{
-  font-size:2.2rem;
-}
+  .smallScreen {
+    flex-direction: column;
+    align-items: center;
+  }
+  .logoSmallScreen {
+    align-self: center;
+    list-style: none;
+  }
+  .ulSmall {
+    width: 70%;
+    position: relative;
+    margin-top: 3%;
+  }
+  .navItemsSmall {
+    font-size: 2.2rem;
+  }
   aside {
     display: unset;
   }

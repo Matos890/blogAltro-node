@@ -15,6 +15,7 @@ import { submitNewArticleJs } from "./newArticle.js";
 import { editPage } from "./editArticle.js";
 import { deleteThisArticle } from "./deleteArticle.js";
 import { navSticky} from "./navInteraction.js"
+import {navSizes} from "./navScreenSize.js"
 ///////////////                    ///////////////
 /////////////////////// HTML ELEMENTS ///////////////////////
 //////////////                    ///////////////
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nav) {
         console.log('ciao');
         navSticky()
+        navSizes()
     }
     else
     {
