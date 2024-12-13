@@ -123,7 +123,7 @@ a:hover {
 
 .sticky {
   position: fixed;
-  background-color: #f7efe8;
+  background-color: var(--backgroundMain);
   z-index: 5;
   padding: 3% 12.5% 3% 12.5%;
   top: -3%;
@@ -701,6 +701,7 @@ footer {
   font-size: 2rem;
   background-color: #333;
   color: #fff;
+  position: relative;
 }
 .footer-wrapper {
   justify-content: center;

@@ -6,7 +6,7 @@ const AppError = require("../utilis/appError.js");
 const { default: slugify } = require("slugify");
 
 // ARTICLES PAGES
-exports.getOverview = catchAsync(async (req, res) => {
+exports.getOverview = catchAsync(async (req, res,next) => {
   const articles = await Articles.find();
   const user = req.user  ;
   res.status(200).render("homepage", {
@@ -18,7 +18,6 @@ exports.getOverview = catchAsync(async (req, res) => {
 exports.getArticle = catchAsync(async (req, res, next) => {
   const article = await Articles.findOne({ slug: req.params.slug });
   const user = req.user  ;
-  console.log(user.role, user.name)
   if (!article) {
     return next(new AppError("there is no such article with that name"), 404);
   }
