@@ -11563,6 +11563,10 @@ var navSmallScreen = document.querySelector(".smallScreen");
 var navWrapper = document.querySelector(".navToStylizeSmall");
 var prettyLine = document.querySelectorAll(".prettyLine");
 var header = document.querySelector("header");
+var menuBurger = document.getElementById("menuToggle");
+var modalMenu = document.querySelector(".modalMenu");
+var modalWrapper = document.querySelector(".modalWrapper");
+var burgerMenuWrapper = document.querySelector(".burgerMenuWrapper");
 function navSizes() {
   var screenWidth = window.innerWidth;
   if (screenWidth > 800) {
@@ -11572,7 +11576,33 @@ function navSizes() {
     navSmallScreen.style.display = "flex";
     navLargeScreen.style.display = "none";
   }
+  if (screenWidth < 600) {
+    navSmallScreen.style.display = "none";
+    menuBurger.style.display = "block";
+  } else {
+    menuBurger.style.display = "none";
+  }
+  modalMenu.classList.add("hideMenu");
   window.addEventListener("resize", navSizes);
+  menuBurger.addEventListener("click", function () {
+    modalWrapper.style.display = "flex";
+    modalWrapper.style.visibility = "visible";
+    modalWrapper.style.opacity = "1";
+    modalMenu.classList.remove("hideMenu");
+    modalMenu.classList.add("showModal");
+    modalMenu.style.opacity = "1";
+  });
+  var closeBtn = document.querySelector(".close-btn");
+  closeBtn.addEventListener("click", function () {
+    modalWrapper.style.display = "none";
+    modalWrapper.style.visibility = "hidden";
+    modalWrapper.style.opacity = "0";
+    modalMenu.classList.remove("showModal");
+    modalMenu.classList.add("hideMenu");
+  });
+  if (screenWidth > 600) {
+    modalWrapper.style.display = "none";
+  }
   var stickyNav1 = function stickyNav1(entries) {
     var screenWidth = window.innerWidth;
     var _entries = _slicedToArray(entries, 1),
@@ -11592,7 +11622,7 @@ function navSizes() {
         if (i === 1 && screenWidth < 800) {
           pretty.style.setProperty("width", "90%", "important");
         } else {
-          console.log('cIo');
+          console.log("cIo");
         }
       });
     }
@@ -11879,7 +11909,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51461" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50914" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

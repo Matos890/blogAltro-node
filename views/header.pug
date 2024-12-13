@@ -45,7 +45,33 @@ header
               li.nav__items.navItemsSmall
                 a(href="/").nav__link Interactive
             .prettyLine
-    - if (user)
-      .form-groupHeader.buttonsAccept.flex.flex-column
-        button(class='buttonLogout') 
-          a.logoutButton Logout
+    <div id="menuToggle" class="show-modal menu-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="modalWrapper" style="visibility:hiiden">
+      <div class="modalMenu">
+        <div class="close-btn" id="closeMenu"></div>
+        <ul class="nav__linksModal">
+          <li class="nav__itemsModal ">
+            <a class="nav__link menuModalReveal" href="/">Home</a>
+          </li>
+          <li class="nav__itemsModal ">
+            <a class="nav__link menuModalReveal" href="/">About Me</a>
+          </li>
+          <li class="nav__itemsModal ">
+            <a class="nav__link menuModalReveal" href="/">Articles</a>
+          </li>
+          <li class="nav__itemsModal ">
+            <a class="nav__link menuModalReveal" href="/">Interactive</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+
+- if (user)
+.form-groupHeader.buttonsAccept.flex.flex-column
+  button(class='buttonLogout') 
+    a.logoutButton Logout

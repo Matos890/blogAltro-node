@@ -8,9 +8,11 @@ const { default: slugify } = require("slugify");
 // ARTICLES PAGES
 exports.getOverview = catchAsync(async (req, res) => {
   const articles = await Articles.find();
+  const user = req.user  ;
   res.status(200).render("homepage", {
     title: "Altro | Home",
     articles,
+    user
   });
 });
 exports.getArticle = catchAsync(async (req, res, next) => {
