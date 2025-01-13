@@ -1,7 +1,5 @@
 header
   .headerWrapper
-    .contentWrapperLogo
-      a(href="/")
     .contentWrapperNav.flex
       .navWrapper
         nav.largeScreen
@@ -45,29 +43,34 @@ header
               li.nav__items.navItemsSmall
                 a(href="/").nav__link Interactive
             .prettyLine
-    <div id="menuToggle" class="show-modal menu-burger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="modalWrapper" style="visibility:hiiden">
-      <div class="modalMenu">
-        <div class="close-btn" id="closeMenu"></div>
-        <ul class="nav__linksModal">
-          <li class="nav__itemsModal ">
-            <a class="nav__link menuModalReveal" href="/">Home</a>
-          </li>
-          <li class="nav__itemsModal ">
-            <a class="nav__link menuModalReveal" href="/">About Me</a>
-          </li>
-          <li class="nav__itemsModal ">
-            <a class="nav__link menuModalReveal" href="/">Articles</a>
-          </li>
-          <li class="nav__itemsModal ">
-            <a class="nav__link menuModalReveal" href="/">Interactive</a>
-          </li>
-          
-        </ul>
+        <div id="menuToggle" class="show-modal menu-burger">
+          //- <span></span>
+          //- <span></span>
+          //- <span></span>
+          .navItems
+              li
+
+              .logo-image
+                img(class='altroIcon' src="/img/AltroIconRed-02-01.png", alt="")
+        </div>
+      <div class="modalWrapper" style="visibility:hiiden">
+        <div class="modalMenu">
+          <div class="close-btn" id="closeMenu"></div>
+          <ul class="nav__linksModal">
+            <li class="nav__itemsModal ">
+              <a class="nav__link menuModalReveal" href="/">Home</a>
+            </li>
+            <li class="nav__itemsModal ">
+              <a class="nav__link menuModalReveal" href="/">About Me</a>
+            </li>
+            <li class="nav__itemsModal ">
+              <a class="nav__link menuModalReveal" href="/">Articles</a>
+            </li>
+            <li class="nav__itemsModal ">
+              <a class="nav__link menuModalReveal" href="/">Interactive</a>
+            </li>
+            
+          </ul>
+        </div>
       </div>
-    </div>
 

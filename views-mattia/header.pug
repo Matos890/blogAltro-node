@@ -1,0 +1,19 @@
+header
+  .headerWrapper
+    .contentWrapperLogo
+      a(href="/")
+    .contentWrapperNav.flex
+      .navWrapper
+        nav
+          ul.garamond
+            span.navItems.nav__items About Us
+            span.navItems.nav__items Literature
+            span.navItems
+              a(href="/").logo-image
+            span.navItems.nav__items Politics
+            span.navItems.nav__items Culture
+
+    - if (user)
+      .form-groupHeader.buttonsAccept.flex.flex-column
+        button(class='buttonLogout') 
+          a.logoutButton Logout
