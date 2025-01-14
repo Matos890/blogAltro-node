@@ -8,10 +8,11 @@
   --fontSizeHtml: 10px;
   /* DIMENSIONE FONT PARAGRAPH */
   --font-size1300-paragraph: 2rem;
-  --font-size1300-paragraphMain: 3rem;
+  --font-size1300-paragraphArticle: 2.2rem;
+  --font-size1300-paragraphMain: 2.5rem;
   /* LINE HEIGHTS  */
   --lineHeightMain-1300: 3.5rem;
-  --lineHeight-1300: 3rem;
+  --lineHeight-1300: 2.5rem;
   /* MARGIN BETWEEN H2 AND PARAGRAPHS */
   --margin-Ph2-1300: 1rem;
   --margin-Ph2-1300Main: 2rem;
@@ -19,12 +20,17 @@
   /* TITLES H1 */
   --titleSection--h1-1300:6rem;
   --fontSizeH1Article-1300: 5rem;
+  /* TITLE H2 */
+  --font-size1300-h2 :2.3rem;
   /* COLONNE POSTS SECTION AUTO; */
   --column-postsMax-1300:40rem;
-  --margin-section:2rem;
-  --font-size1300-h2 :2.2rem;
+  /* MARGINS */
+  --margin-section:4rem;
+  --margin-sectionMobile:4rem;
+  /* CAPTIONS */
+  --captions-subtitles-1300: 2rem;
+  /* TO DEFINE */
   --fontSizeH1Homepage-1300: 5rem;
-  --captions-subtitles-1300: 1.2rem;
   --fontSizeH2Subheading-1300: 2rem;
   --lineHeightTitle-1300: 1.3;
   --fontSizeP-1300: 2rem;
@@ -315,7 +321,7 @@ h2 {
 }
 p {
   font-size: var(--fontSizeP-bigScreen);
-  margin-bottom: 1.5rem;
+  /* margin-bottom: 1.5rem; */
 }
 /* CSS FOR WEBSITE */
 
@@ -512,6 +518,7 @@ section {
   flex-wrap: wrap;
   justify-content: center;
   position: relative;
+  margin-top: var(--margin-sectionMobile)
 }
 /* .mainPageSection {
   margin-top: 5%;
@@ -558,6 +565,8 @@ section {
   display: flex;
   flex-direction: column;
   width: 100%;
+  font-size: var(--font-size1300-paragraph);
+  text-align: center;
 }
 .containerTextS2 {
   display: flex;
@@ -574,10 +583,10 @@ section {
   width: 100%;
 }
 .homePageParagraph {
-  font-size: var(--font-size-paragraph);
+  font-size: var(--font-size1300-paragraph);
   font-weight: lighter;
   line-height: 2.5rem;
-  margin-top: calc(0.8rem + 1vh);
+  /* margin-top: calc(0.8rem + 1vh); */
   color: #444;
 }
 .containerPicture {
@@ -627,7 +636,7 @@ section {
   /* align-items: center !important; */
   width: 100%;
   /* border-top: 0.1rem solid; */
-  padding-top: 5rem;
+  /* padding-top: 5rem; */
   /* justify-content: center !important; */
   flex-direction: column;
 }
@@ -672,7 +681,7 @@ aside {
 } */
 .titleSections {
   font-size: 5rem;
-  font-weight: bold;
+  font-weight: normal;
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.5);
   margin-bottom: 2rem;
   color: var(--colorRedMain);
@@ -911,7 +920,7 @@ option:hover {
   margin-bottom: 1.5rem;
   hyphens: auto;
   line-height: 3.8rem;
-  font-weight: lighter;
+  font-weight: normal;
 }
 .paragraphArticle > p:first-child::first-letter {
   font-size: calc(5rem + 2.8rem);
@@ -1219,6 +1228,7 @@ option:hover {
   #titleArticle {
     font-size: var(--fontSizeH1Article-1300);
     line-height: 5rem;
+    margin-bottom:var(--margin-section)
   }
   .authorArticleName {
     font-size: var(--fontSizeP-1300);
@@ -1328,6 +1338,9 @@ option:hover {
     text-align: center;
     font-size: var(--fontSizeH1Homepage-1300);
   }
+  .contentInnerWrapper{
+    margin-top:var(--margin-section)
+  }
   .mainContent .headArticle .homePageParagraph {
     font-size: var(--font-size1300-paragraphMain);
     line-height: var(--lineHeightMain-1300);
@@ -1337,7 +1350,7 @@ option:hover {
   .homePageParagraph {
     line-height: var(--lineHeight-1300);
     font-size: var(--font-size1300-paragraph);
-    margin-top: var(--margin-Ph2-1300)
+    /* margin-top: var(--margin-Ph2-1300) */
   }
   .titleSections{
     font-size:var(--titleSection--h1-1300);
@@ -1382,14 +1395,27 @@ option:hover {
     column-gap: var(--column6-gap-column-1300);
     row-gap: var(--column6-gap-row-1300);
   }
+  .titleArticleCollection{
+    margin-bottom: var(--margin-Ph2-1300);
+  }
   .containerArticleCollection{
     margin-left:2rem;
   }
-  .containerArticle {
+  .containerArticleCollection .containerArticle {
     grid-column: 2/ -2;
-    font-size: var(--font-size1300-paragraph);
+    font-size: var(--font-size1300-paragraphArticle);
+  }
+  .paragraphArticle p{
+    margin-bottom: 1.5rem;
   }
   .paragraphArticle{
-    line-height: 3.5rem;
+    line-height: 2.8rem;
+    margin-top:var(--margin-section)
+  }
+  .contentArticleWrapper{
+    margin-top: var(--margin-section);
+  }
+  .containerCategoryArticle{
+    font-size: 2rem;
   }
 }

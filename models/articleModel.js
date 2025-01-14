@@ -29,11 +29,12 @@ const articleSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
+      get: (date) => new Date(date).toLocaleDateString("it-IT"),
     },
     imageCover: {
       type: String,
       required: true,
-      default: 'default.jpg'
+      default: "default.jpg",
     },
     imageCaption: {
       type: String,
@@ -56,8 +57,9 @@ const articleSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-  },
+  }
 );
+articleSchema.set("toJSON", { getters: true });
 articleSchema.pre("validate", function (next) {
   if (this.isModified("title")) {
     // Controlla se il titolo è stato modificato
