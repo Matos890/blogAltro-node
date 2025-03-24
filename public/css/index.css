@@ -161,7 +161,6 @@ a:hover {
 }
 .navToStylize {
   transition: transform 1s ease-in; /* Transizione per la proprietà transform */
-  transform: translateY(-100%); /* Inizia nascosto sopra la vista */
 }
 
 .navToStylize.sticky {
