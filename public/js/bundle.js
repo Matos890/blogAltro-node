@@ -11515,31 +11515,33 @@ function navSticky() {
     var _entries = _slicedToArray(entries, 1),
       entry = _entries[0];
     if (!entry.isIntersecting) {
+      navWrapper.classList.remove("fluid");
       navWrapper.classList.add("sticky");
       console.log("sticky fatto");
     } else {
       navWrapper.classList.remove("sticky");
+      navWrapper.classList.add("fluid");
       console.log("qualcosa è andato storto");
     }
   };
   var headerObserver = new IntersectionObserver(stickyNav, {
     root: null,
     threshold: 0,
-    rootMargin: "".concat(window.innerHeight, "px") //accept only px
+    rootMargin: "".concat(navHeight, "px") //accept only px
   });
   headerObserver.observe(header);
   //Afters and befores to be activated
-  var titleSection = document.querySelector('section');
-  console.log('eccomi', titleSection);
+  var titleSection = document.querySelector("section");
+  console.log("eccomi", titleSection);
   if (nav) {
     siblings.forEach(function (element) {
       console.log(element.innerHTML);
       console.log(element.classList.contains(titleSection));
       if (titleSection.classList.contains(element.innerHTML.trim())) {
-        console.log('is true');
-        element.classList.add('isActivated');
+        console.log("is true");
+        element.classList.add("isActivated");
       } else {
-        element.classList.remove('isActivated');
+        element.classList.remove("isActivated");
       }
     });
   }
@@ -11909,7 +11911,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50914" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50590" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

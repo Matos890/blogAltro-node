@@ -17,43 +17,43 @@ export function navSticky() {
   ///sticky
   const header = document.querySelector("header");
   const navWrapper = document.querySelector(".navToStylize");
-const navSmallScreen = document.querySelector(".smallScreen");
+  const navSmallScreen = document.querySelector(".smallScreen");
   const mainContent = document.querySelector(".mainContent");
   const navHeight = navWrapper.getBoundingClientRect().height;
   const altroIcon = document.querySelector(".altroIcon");
   const stickyNav = function (entries) {
     const [entry] = entries;
     if (!entry.isIntersecting) {
+      navWrapper.classList.remove("fluid");
       navWrapper.classList.add("sticky");
       console.log("sticky fatto");
     } else {
       navWrapper.classList.remove("sticky");
+      navWrapper.classList.add("fluid");
       console.log("qualcosa è andato storto");
     }
   };
   const headerObserver = new IntersectionObserver(stickyNav, {
     root: null,
     threshold: 0,
-    rootMargin: `${window.innerHeight}px`, //accept only px
+    rootMargin: `${navHeight}px`, //accept only px
   });
   headerObserver.observe(header);
   //Afters and befores to be activated
-  let titleSection = document.querySelector('section');
+  let titleSection = document.querySelector("section");
 
-
-  console.log('eccomi',titleSection)
-if(nav){
-  siblings.forEach((element)=>{
-    console.log(element.innerHTML)
-    console.log(element.classList.contains(titleSection))
-    if(titleSection.classList.contains(element.innerHTML.trim())){
-      console.log('is true')
-      element.classList.add('isActivated')
-    }
-  else{
-    element.classList.remove('isActivated')
+  console.log("eccomi", titleSection);
+  if (nav) {
+    siblings.forEach((element) => {
+      console.log(element.innerHTML);
+      console.log(element.classList.contains(titleSection));
+      if (titleSection.classList.contains(element.innerHTML.trim())) {
+        console.log("is true");
+        element.classList.add("isActivated");
+      } else {
+        element.classList.remove("isActivated");
+      }
+    });
   }
-  })}
   /// NAV Small screen
-  
 }
