@@ -434,6 +434,7 @@ nav {
   top: 0%;
   opacity: 0.9;
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.5);
+  width: 75%;
 }
 .navToStylize {
   transition: transform 1s ease-in; /* Transizione per la proprietà transform */
@@ -1090,7 +1091,7 @@ option:hover {
     font-size: 4rem;
   }
   .ulSmall {
-    width: 100%;
+    width: 75%;
     position: relative;
     margin-top: 0%;
     justify-content: space-around;
