@@ -10,7 +10,7 @@ const burgerMenuWrapper = document.querySelector(".burgerMenuWrapper");
 
 export function navSizes() {
   const screenWidth = window.innerWidth;
-  if (screenWidth > 800) {
+  if (screenWidth > 960) {
     navLargeScreen.style.display = "flex";
     navSmallScreen.style.display = "none";
   } else {
