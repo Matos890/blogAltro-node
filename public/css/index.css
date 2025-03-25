@@ -327,7 +327,7 @@ a {
 h2 {
   font-size: 1.8rem;
   text-transform: capitalize;
-  line-height: 3rem;
+  line-height: 1.2;
 }
 /* CSS FOR WEBSITE */
 
@@ -792,7 +792,7 @@ footer {
   font-size: var(--fontSizeH1HomepageMain-Min);
   font-weight: 1000;
   margin-top: 2rem;
-  line-height: 4rem;
+  line-height: 1.2;
   hyphens: auto;
 }
 input {
@@ -1220,7 +1220,6 @@ option:hover {
   .titleSubmitArticle {
     text-align: unset;
     margin-top: 2rem;
-    line-height: 5.5rem;
     hyphens: auto;
   }
   .containerTextS2 {
@@ -1298,7 +1297,6 @@ option:hover {
   ------------------------*/
   h2 {
     font-size: 2rem;
-    line-height: 2.5rem;
   }
   .form-groupHeader {
     margin-left: 85%;
