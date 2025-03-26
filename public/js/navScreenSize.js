@@ -29,6 +29,7 @@ export function navSizes() {
     if (screenWidth > 960) {
       menuBurger.style.display = "none";
       navLargeScreen.style.display = "flex";
+      modalWrapper.style.display = "none";
       navSmallScreen.style.display = "none";
     } 
   }
@@ -49,38 +50,38 @@ export function navSizes() {
     }
   }
 
-  function stickyNav(entries) {
-    const screenWidth = window.innerWidth;
-    const [entry] = entries;
-    if (!entry.isIntersecting) {
-      navWrapper.classList.add("sticky");
-      prettyLine.forEach((pretty, i) => {
-        if (i === 1 && screenWidth < 800) {
-          pretty.style.width = "70%";
-        }
-      });
-    } else {
-      navWrapper.classList.remove("sticky");
-      prettyLine.forEach((pretty, i) => {
-        if (i === 1 && screenWidth < 800) {
-          pretty.style.width = "90%";
-        }
-      });
-    }
-  }
+  // function stickyNav(entries) {
+  //   const screenWidth = window.innerWidth;
+  //   const [entry] = entries;
+  //   if (!entry.isIntersecting) {
+  //     navWrapper.classList.add("sticky");
+  //     prettyLine.forEach((pretty, i) => {
+  //       if (i === 1 && screenWidth < 800) {
+  //         pretty.style.width = "70%";
+  //       }
+  //     });
+  //   } else {
+  //     navWrapper.classList.remove("sticky");
+  //     prettyLine.forEach((pretty, i) => {
+  //       if (i === 1 && screenWidth < 800) {
+  //         pretty.style.width = "90%";
+  //       }
+  //     });
+  //   }
+  // }
 
   // Inizializza gli eventi una sola volta
   window.addEventListener("resize", updateNav);
   menuBurger?.addEventListener("click", () => toggleMenu(true));
   closeBtn?.addEventListener("click", () => toggleMenu(false));
 
-  const observer = new IntersectionObserver(stickyNav, {
-    root: null,
-    threshold: 0,
-    rootMargin: `${window.innerHeight}px`,
-  });
+  // const observer = new IntersectionObserver(stickyNav, {
+  //   root: null,
+  //   threshold: 0,
+  //   rootMargin: `${window.innerHeight}px`,
+  // });
 
-  observer.observe(header);
+  // observer.observe(header);
 
   // Esegui una prima chiamata per aggiornare lo stato iniziale
   updateNav();

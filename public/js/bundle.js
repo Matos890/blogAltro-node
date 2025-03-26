@@ -11524,12 +11524,12 @@ function navSticky() {
       console.log("qualcosa è andato storto");
     }
   };
-  var headerObserver = new IntersectionObserver(stickyNav, {
-    root: null,
-    threshold: 0,
-    rootMargin: "".concat(navHeight, "px") //accept only px
-  });
-  headerObserver.observe(header);
+  // const headerObserver = new IntersectionObserver(stickyNav, {
+  //   root: null,
+  //   threshold: 0,
+  //   rootMargin: `${navHeight}px`, //accept only px
+  // });
+  // headerObserver.observe(header);
   //Afters and befores to be activated
   var titleSection = document.querySelector("section");
   console.log("eccomi", titleSection);
@@ -11554,12 +11554,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.navSizes = navSizes;
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var navLargeScreen = document.querySelector(".largeScreen");
 var navSmallScreen = document.querySelector(".smallScreen");
 var navWrapper = document.querySelector(".navToStylizeSmall");
@@ -11589,6 +11583,7 @@ function navSizes() {
     if (screenWidth > 960) {
       menuBurger.style.display = "none";
       navLargeScreen.style.display = "flex";
+      modalWrapper.style.display = "none";
       navSmallScreen.style.display = "none";
     }
   }
@@ -11607,26 +11602,26 @@ function navSizes() {
       modalMenu.classList.add("hideMenu");
     }
   }
-  function stickyNav(entries) {
-    var screenWidth = window.innerWidth;
-    var _entries = _slicedToArray(entries, 1),
-      entry = _entries[0];
-    if (!entry.isIntersecting) {
-      navWrapper.classList.add("sticky");
-      prettyLine.forEach(function (pretty, i) {
-        if (i === 1 && screenWidth < 800) {
-          pretty.style.width = "70%";
-        }
-      });
-    } else {
-      navWrapper.classList.remove("sticky");
-      prettyLine.forEach(function (pretty, i) {
-        if (i === 1 && screenWidth < 800) {
-          pretty.style.width = "90%";
-        }
-      });
-    }
-  }
+
+  // function stickyNav(entries) {
+  //   const screenWidth = window.innerWidth;
+  //   const [entry] = entries;
+  //   if (!entry.isIntersecting) {
+  //     navWrapper.classList.add("sticky");
+  //     prettyLine.forEach((pretty, i) => {
+  //       if (i === 1 && screenWidth < 800) {
+  //         pretty.style.width = "70%";
+  //       }
+  //     });
+  //   } else {
+  //     navWrapper.classList.remove("sticky");
+  //     prettyLine.forEach((pretty, i) => {
+  //       if (i === 1 && screenWidth < 800) {
+  //         pretty.style.width = "90%";
+  //       }
+  //     });
+  //   }
+  // }
 
   // Inizializza gli eventi una sola volta
   window.addEventListener("resize", updateNav);
@@ -11636,12 +11631,14 @@ function navSizes() {
   closeBtn === null || closeBtn === void 0 || closeBtn.addEventListener("click", function () {
     return toggleMenu(false);
   });
-  var observer = new IntersectionObserver(stickyNav, {
-    root: null,
-    threshold: 0,
-    rootMargin: "".concat(window.innerHeight, "px")
-  });
-  observer.observe(header);
+
+  // const observer = new IntersectionObserver(stickyNav, {
+  //   root: null,
+  //   threshold: 0,
+  //   rootMargin: `${window.innerHeight}px`,
+  // });
+
+  // observer.observe(header);
 
   // Esegui una prima chiamata per aggiornare lo stato iniziale
   updateNav();
@@ -11920,7 +11917,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52253" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58522" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

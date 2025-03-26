@@ -33,12 +33,12 @@ export function navSticky() {
       console.log("qualcosa è andato storto");
     }
   };
-  const headerObserver = new IntersectionObserver(stickyNav, {
-    root: null,
-    threshold: 0,
-    rootMargin: `${navHeight}px`, //accept only px
-  });
-  headerObserver.observe(header);
+  // const headerObserver = new IntersectionObserver(stickyNav, {
+  //   root: null,
+  //   threshold: 0,
+  //   rootMargin: `${navHeight}px`, //accept only px
+  // });
+  // headerObserver.observe(header);
   //Afters and befores to be activated
   let titleSection = document.querySelector("section");
 
