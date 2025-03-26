@@ -11574,21 +11574,21 @@ function navSizes() {
   function updateNav() {
     var screenWidth = window.innerWidth;
     console.log('screenwidth:', screenWidth);
-    if (screenWidth > 960) {
-      navLargeScreen.style.display = "flex";
-      navSmallScreen.style.display = "none";
-    } else {
-      navSmallScreen.style.display = "flex";
-      navLargeScreen.style.display = "none";
-    }
     if (screenWidth < 600) {
       navSmallScreen.style.display = "none";
-      menuBurger.style.display = "block";
-    } else {
-      menuBurger.style.display = "none";
-    }
-    if (screenWidth > 600) {
+      navLargeScreen.style.display = "none";
       modalWrapper.style.display = "none";
+      menuBurger.style.display = "block";
+    }
+    if (screenWidth > 600 && screenWidth < 960) {
+      modalWrapper.style.display = "none";
+      menuBurger.style.display = "none";
+      navLargeScreen.style.display = "none";
+      navSmallScreen.style.display = "flex";
+    }
+    if (screenWidth > 960) {
+      menuBurger.style.display = "none";
+      navLargeScreen.style.display = "flex";
       navSmallScreen.style.display = "none";
     }
   }

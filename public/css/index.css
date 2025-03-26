@@ -404,12 +404,14 @@ ul {
 }
 .navWrapper {
   width: 100%;
+  display: flex;
   justify-content: center;
   position: relative;
 }
 nav {
+  /* display: inline-flex; */
   justify-content: center;
-  width: 75%;
+  width: 100%;
 }
 .nav__link {
   position: relative;
@@ -424,6 +426,9 @@ nav {
   align-items: center;
   color: var(--colorRedMain);
 }
+  .smallScreen {
+    display: none;
+  }
 .sticky {
   position: fixed;
   background-color: var(--backgroundMain);
@@ -1134,7 +1139,7 @@ option:hover {
     flex-direction: column;
   }
   .smallScreen {
-  display: none;
+    display: none;
   }
 }
 /*--------------- 740px ------------------*/
@@ -1143,11 +1148,7 @@ option:hover {
   .smallScreen {
     flex-direction: column;
     align-items: center;
-  }
-  .navWrapper{
-    display: flex;
-  }
-  .goSmallScreen {
+
     align-self: center;
     list-style: none;
   }
@@ -1158,6 +1159,10 @@ option:hover {
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 3rem;
   }
+nav{
+
+  width: 75%;
+}
   .flex-column {
     flex-direction: column;
   }
