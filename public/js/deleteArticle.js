@@ -7,7 +7,7 @@ export const deleteThisArticle = async () => {
   try {
     const res = await axios({
       method: "DELETE",
-      url: `http://localhost:7000/api/v1/articles/${slug}`,
+      url: `http://localhost:3000/api/v1/articles/${slug}`,
       headers: { "Content-Type": "application/json" },
     });
 if (res.status ===204)

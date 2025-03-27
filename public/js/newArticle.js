@@ -8,7 +8,7 @@ data) => {
     const token = new URLSearchParams(window.location.hash).get("access_token");
     const res = await axios({
       method: "POST",
-      url: "http://localhost:7000/api/v1/articles/submit-new-article",
+      url: "http://localhost:3000/api/v1/articles/submit-new-article",
       data,
       headers: {
         "content-type": "application/json",

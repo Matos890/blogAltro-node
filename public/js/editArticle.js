@@ -9,7 +9,7 @@ export const editPage = async (data) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url: `http://localhost:7000/api/v1/articles/edit/${slug}`,
+      url: `http://localhost:3000/api/v1/articles/edit/${slug}`,
       data,
       headers: {
         "Content-Type": "application/json",

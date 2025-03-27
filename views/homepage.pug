@@ -25,7 +25,7 @@ block content
 										img.imgMain(src=`/img/${articles[articles.length -2].imageCover}`)
 								.containerText
 									h2=articles[articles.length -2].title 
-									p(class='homePageParagraph')=articles[articles.length -2].subheading 
+									p(class='homePageParagraph')=articles[articles.length -2].createdAt 
 
 						a.sideArticle.leftArticle.secondArticle.articleDue(href=`/articles/${articles[articles.length -3].category}/${articles[articles.length -3].slug}`) 
 							aside
@@ -34,7 +34,7 @@ block content
 										img.imgMain(src=`/img/${articles[articles.length -3].imageCover}`)
 								.containerText
 									h2=articles[articles.length -3].title 
-									p(class='homePageParagraph')=articles[articles.length -3].subheading 
+									p(class='homePageParagraph')=articles[articles.length -3].createdAt 
 
 									
 								
@@ -52,7 +52,7 @@ block content
 										.containerTextS2
 
 											h2.titleArticleCollection=articles[i].title  
-											p(class='homePageParagraph')!=articles[i].subheading
+											p(class='homePageParagraph')=articles[i].createdAt
 			section.SecondPageArticleLists.flex
 				.marginControl.flex
 						h1.titleSections Interactive Content 
