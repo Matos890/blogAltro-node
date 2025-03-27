@@ -1088,9 +1088,13 @@ option:hover {
     display: grid;
   }
   .col-4 {
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-template-columns: repeat(12,1fr);
+    /* grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); */
     gap: 3rem;
   }
+.articleCollectionCentered a {
+grid-column: span 3;
+}
   .flex-column {
     flex-direction: column;
   }
@@ -1178,7 +1182,7 @@ option:hover {
     display: grid;
   }
   .col-4 {
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); */
     gap: 3rem;
   }
   .flex-column {
@@ -1353,7 +1357,7 @@ option:hover {
     column-gap: 5.48rem;
   }
   .col-4 {
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    /* grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); */
     gap: 3rem;
   }
   .homePageParagraph {
@@ -1414,10 +1418,10 @@ option:hover {
     row-gap: var(--column8-gap-row-1300);
   }
   .col-4 {
-    grid-template-columns: repeat(
+    /* grid-template-columns: repeat(
       auto-fit,
       minmax(var(--column-postsMax-1300), 1fr)
-    );
+    ); */
 
     gap: 3rem;
   }
