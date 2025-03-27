@@ -13,8 +13,8 @@
   --fontSizeMax-articleHomeArticle: 2.2rem;
   --fontSizeMax-articleHomeMain: 2.5rem;
   /* LINE HEIGHTS  */
-  --lineHeightMain-1300: 3.5rem;
-  --lineHeight-1300: 2.5rem;
+  --lineHeightMain-1300: 1.2;
+  --lineHeight-1300: 1.2;
   /* MARGIN BETWEEN H2 AND PARAGRAPHS */
   --margin-Ph2-1300: 1rem;
   --margin-Ph2-1300Main: 2rem;
@@ -31,7 +31,7 @@
   --captions-subtitles-1300: 2rem;
   /* TO DEFINE */
   --fontSizeH2Subheading-1300: 1.8rem;
-  --lineHeightTitle-1300: 4rem;
+  --lineHeightTitle-1300: 1.2;
   --fontSizeP-1300: 2rem;
   --navFontSize-1300: 2.2rem;
   --borderRadius-1300: 1rem;
@@ -46,22 +46,24 @@
   --oldBackgroundColor: #f7efe8;
   /*400-480*/
 
-  --font-size-h1-sm: 3.6rem;
+  --font-size-h1-sm: 3rem;
   --font-size-h2-sm: 2rem;
   --font-size-p-sm: 2rem;
   ----font-size-em-sm: 1.8rem;
-  --line-height-h2-Article-sm: 2.5rem;
+  --line-height-h2-Article-sm: 1.2;
   --line-height-h1-article-sm: 1.2;
   --font-size-p-home-sm: 2.2rem;
 
   --font-size-h2-home-sm: 2rem;
   ----font-size-h1-home-sm: 3.6rem;
-  --font-size-sections-sm:4rem;
-  --font-size-h2-home-md:2.2rem;
+  --font-size-sections-sm: 4rem;
+  --font-size-h2-home-md: 2.2rem;
   --font-size-h2-home-lg: 2.5rem;
   --titleSection--h1-1300: 5rem;
   --font-size-h1-home-lg: 4.5rem;
   --fontSizeH1Article-1300: 5rem;
+  --font-size-p-artcle-md: 2.2rem;
+  --font-size-h1-article-md: 3.4rem;
 }
 body,
 h1,
@@ -110,7 +112,7 @@ html {
 }
 .paragraphArticle p:last-child:after {
   content: "\25C6";
-  font-size: .8em;
+  font-size: 0.8em;
   color: #ba2424; /* Colore personalizzabile */
 }
 /* remove animationfor people who've turned them off */
@@ -331,7 +333,7 @@ h2 {
   font-size: var(--font-size-h2-home-sm);
   line-height: 1.2;
 }
-.containerText > h2{
+.containerText > h2 {
   text-transform: capitalize;
 }
 /* CSS FOR WEBSITE */
@@ -541,8 +543,7 @@ section {
   height: 2rem;
   display: block;
   margin: 3rem auto 0; /* Margine sopra per distanziarlo dal paragrafo */
-  /* opacity: 0.5; */
- 
+/* opacity: 0.5; */
 
 /* .titleSections::after {
   content: "";
@@ -554,7 +555,7 @@ section {
   display: inline-block;
   margin-left: 1rem;
   /* opacity: 0.5; */
-  /* transform: rotate3d(0, 1, 0, -180deg);
+/* transform: rotate3d(0, 1, 0, -180deg);
 } */
 .logo-image::before {
   content: "";
@@ -584,7 +585,7 @@ section {
   height: 6rem;
   display: block;
   margin: 5rem auto 0; /* Margine sopra per distanziarlo dal paragrafo */
-  /* opacity: 0.5; 
+/* opacity: 0.5; 
 } */
 
 .form-groupHeader {
@@ -649,7 +650,7 @@ section {
 .homePageParagraph {
   font-size: var(--font-size-p-home-sm);
   font-weight: lighter;
-  line-height: 2.5rem;
+  line-height: var(--lineHeight-1300);
   margin-top: 1rem;
   color: #444;
 }
@@ -771,7 +772,6 @@ aside {
 /*-------------------------*/
 
 footer {
-  height: 25vh;
   font-size: var(--font-size-p-sm);
   background-color: #333;
   color: #fff;
@@ -782,6 +782,7 @@ footer {
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding: 2rem 0rem 2rem 0rem;
 }
 .content-footer {
   height: 10rem;
@@ -940,7 +941,9 @@ option:hover {
 .containerAuthorArticle {
   grid-row: 5;
   grid-column: 1/-1;
-  padding: 0 2rem 0 2rem;
+  margin: 0 2rem 2rem 2rem;
+  padding-bottom: 1rem;
+  border-bottom: solid 0.1rem var(--colorRedMain);
 }
 .articleCreatedAt {
   font-size: var(----font-size-em-sm);
@@ -956,7 +959,8 @@ option:hover {
 #subheadingArticle {
   font-size: var(--font-size-h2-sm);
   line-height: var(--line-height-h2-Article-sm);
-  margin-top: 2.2rem;
+  margin-top: 1.2rem;
+  opacity: 0.8;
 }
 .containerArticle {
   grid-row: 6;
@@ -982,11 +986,11 @@ option:hover {
   position: relative;
   color: var(--colorRedMain);
   font-weight: bold;
-  line-height: 0.6;
+  line-height: 0.8;
   font-family: inherit;
   /* display: inline-block; */
   text-transform: uppercase;
-  padding: 0.05em 0.05em ;
+  padding: 0.02em 0.05em;
 }
 .paragraphArticle > h2 {
   font-size: 3rem;
@@ -998,7 +1002,6 @@ option:hover {
   font-size: var(----font-size-em-sm);
   font-weight: bold;
   color: var(--colorRedMain);
-  border-bottom: 0.1rem solid;
   width: 80%;
 }
 /*-----------------------*/
@@ -1158,6 +1161,12 @@ option:hover {
   h2 {
     font-size: var(--font-size-h2-home-md);
   }
+  #subheadingArticle {
+    font-size: var(--font-size-p-artcle-md);
+  }
+  #titleArticle {
+    font-size: var(--font-size-h1-article-md);
+  }
   .smallScreen {
     flex-direction: column;
     align-items: center;
@@ -1171,9 +1180,6 @@ option:hover {
   .col-4 {
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 3rem;
-  }
-  nav {
-    width: 75%;
   }
   .flex-column {
     flex-direction: column;
@@ -1189,6 +1195,9 @@ option:hover {
   }
   ul {
     width: 90%;
+  }
+  .containerArticle {
+    font-size: var(--font-size-p-artcle-md);
   }
   .form-groupHeader {
     margin-left: 90%;
@@ -1286,7 +1295,7 @@ option:hover {
     line-height: var(--lineHeight-1300);
   }
   .paragraphArticle {
-    line-height: 2.8rem;
+    line-height: 1.2;
   }
 
   .altroIconSticky {
@@ -1327,6 +1336,9 @@ option:hover {
     width: 90%;
   } */
 
+  nav {
+    width: 75%;
+  }
   ul {
     width: 100%;
   }
@@ -1363,6 +1375,7 @@ option:hover {
   }
   .paragraphArticle > p:first-child::first-letter {
     font-size: 17.6rem;
+    line-height: 0.7;
   }
   .mainContent .headArticle .homePageParagraph {
     font-size: var(--fontSizeMax-articleHomeMain);
@@ -1426,6 +1439,11 @@ option:hover {
   .titleArticleCollection {
     margin-bottom: var(--margin-Ph2-1300);
   }
+  .containerAuthorArticle {
+    border-bottom: unset;
+    padding: 0 2rem 2rem 2rem;
+    margin: unset;
+  }
   .containerArticleCollection {
     margin-left: 2rem;
   }
@@ -1441,7 +1459,7 @@ option:hover {
     height: 5rem;
   }
   .paragraphArticle {
-    line-height: 2.8rem;
+    line-height: 1.2;
   }
   .contentArticleWrapper {
     margin-top: var(--margin-section);
@@ -1461,17 +1479,18 @@ option:hover {
     grid-row: 4;
     grid-column: 1;
   }
+  #titleArticle {
+    font-size: 3.6rem;
+  }
   .containerCategoryArticle {
     grid-row: 2;
     grid-column: 1;
-  }
-  .containerCategoryArticle {
-    border-bottom: 0.1rem solid;
   }
 
   .containerTitleArticle {
     grid-row: 1;
     grid-column: 2/-2;
+    padding: unset;
   }
   .buttonsAccept,
   .buttonsAcceptArticle {
