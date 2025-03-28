@@ -46,22 +46,25 @@
   --oldBackgroundColor: #f7efe8;
   /*400-480*/
 
-  --font-size-h1-sm: 3rem;
+  --font-size-h1-sm: 3.6rem;
   --font-size-h2-sm: 2rem;
   --font-size-p-sm: 2rem;
-  ----font-size-em-sm: 1.8rem;
-  --line-height-h2-Article-sm: 1.2;
-  --line-height-h1-article-sm: 1.2;
-  --font-size-p-home-sm: 2.2rem;
+  --font-size-em-sm: 1.8rem;
+  --line-height-h2-Article-sm: 1;
+  --line-height-h1-article-sm: 1;
+  --font-size-p-home-sm: 2.4rem;
 
   --font-size-h2-home-sm: 2rem;
-  ----font-size-h1-home-sm: 3.6rem;
+  --font-size-h1-home-sm: 3.6rem;
   --font-size-sections-sm: 4rem;
-  --font-size-h2-home-md: 2.2rem;
-  --font-size-h2-home-lg: 2.5rem;
-  --titleSection--h1-1300: 5rem;
-  --font-size-h1-home-lg: 4.5rem;
-  --fontSizeH1Article-1300: 5rem;
+  --font-size-h1-home-sm: 3.6rem;
+  --font-size-h1-home-md: 3.6rem;
+  --font-size-h2-home-md: 2rem;
+  --font-size-p-home-md: 2.4rem;
+  --font-size-h2-home-lg: 2.4rem;
+  --titleSection--h1-1300: 4.8rem;
+  --font-size-h1-home-lg: 4.8rem;
+  --fontSizeH1Article-1300: 4.8rem;
   --font-size-p-artcle-md: 2.2rem;
   --font-size-h1-article-md: 3.4rem;
 }
@@ -751,7 +754,7 @@ aside {
   text-decoration: underline;
 }
 .containerPictureSecondSectionHome {
-  width: 40%;
+  width: 50%;
 }
 .pictureInsideSecondSection {
   position: relative;
@@ -799,7 +802,7 @@ footer {
   margin-bottom: 2rem;
 }
 .titleSubmitArticle {
-  font-size: var(----font-size-h1-home-sm);
+  font-size: var(--font-size-h1-home-sm);
   font-weight: 600;
   margin-top: 2rem;
   line-height: 1.2;
@@ -930,7 +933,7 @@ option:hover {
 .containerCategoryArticle {
   grid-row: 7;
   grid-column: 1/-1;
-  font-size: var(----font-size-em-sm);
+  font-size: var(--font-size-em-sm);
   font-weight: bold;
   color: var(--colorRedMain);
   height: fit-content;
@@ -946,7 +949,7 @@ option:hover {
   border-bottom: solid 0.1rem var(--colorRedMain);
 }
 .articleCreatedAt {
-  font-size: var(----font-size-em-sm);
+  font-size: var(--font-size-em-sm);
   font-weight: bold;
 }
 #titleArticle {
@@ -999,7 +1002,7 @@ option:hover {
   color: var(--colorRedMain);
 }
 .authorArticleName {
-  font-size: var(----font-size-em-sm);
+  font-size: var(--font-size-em-sm);
   font-weight: bold;
   color: var(--colorRedMain);
   width: 80%;
@@ -1078,6 +1081,9 @@ option:hover {
 }
 
 @media (min-width: 600px) {
+  h2{
+    font-size: var(--font-size-h2-home-md);
+  }
   .smallScreen {
     flex-direction: column;
     align-items: center;
@@ -1093,7 +1099,7 @@ option:hover {
     gap: 3rem;
   }
   .articleCollectionCentered a {
-    grid-column: span 4;
+    grid-column: span 6;
   }
   .flex-column {
     flex-direction: column;
@@ -1142,11 +1148,11 @@ option:hover {
   }
   .titleSubmitArticle {
     text-align: center;
-    font-size: var(--font-size-h1-home-lg);
+    font-size: var(--font-size-h1-home-md);
   }
   .homePageParagraph {
     line-height: var(--lineHeight-1300);
-    font-size: var(--fontSizeMax-articleHome);
+    font-size: var(--font-size-p-home-md);
   }
   .containerPictureSecondSectionHome {
     width: 100%;
@@ -1347,7 +1353,7 @@ option:hover {
     width: 100%;
   }
   .nav__items {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   /* HOMEPAGE */
   .col-8-1300 {
@@ -1359,6 +1365,9 @@ option:hover {
   .col-4 {
     /* grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); */
     gap: 3rem;
+  }
+  .articleCollectionCentered a {
+    grid-column: span 4;
   }
   .homePageParagraph {
     line-height: 2.5rem;
@@ -1399,7 +1408,7 @@ option:hover {
     width: 100%;
   }
   .nav__items {
-    font-size: 3rem;
+    font-size: 2.4rem;
     width: 18rem;
     display: flex;
     justify-content: center;
