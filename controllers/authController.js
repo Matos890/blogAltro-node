@@ -26,7 +26,7 @@ const createSendToken = (user, statusCode, res) => {
     expires: expiresAt,
     secure: true,
 
-    httpOnly:process.env.NODE_ENV ==='production',
+    httpOnly: process.env.NODE_ENV === "production",
     sameSite: "None",
   };
 
@@ -74,11 +74,11 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.logout = (req, res) => {
   res.cookie("jwt", "loggedout", {
     expires: new Date(Date.now() + 10 * 1000),
-    secure: true,
     httpOnly: true,
-    sameSite: "None",
-    partitioned: true,
+    sameSite: "Lax", // funziona anche su localhost
+    secure: false, // disattiva secure in locale
   });
+
   res.status(200).json({ status: "success" });
 };
 
@@ -101,7 +101,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   if (!token) {
     return next(
-      new AppError("You are not logged in! Please log in to get access.", 401),
+      new AppError("You are not logged in! Please log in to get access.", 401)
     );
   }
 
@@ -114,15 +114,15 @@ exports.protect = catchAsync(async (req, res, next) => {
     return next(
       new AppError(
         "The user belonging to this token does no longer exist.",
-        401,
-      ),
+        401
+      )
     );
   }
 
   // 4) Check if user changed password after the token was issued
   if (currentUser.changedPasswordAfter(decoded.iat)) {
     return next(
-      new AppError("User recently changed password! Please log in again.", 401),
+      new AppError("User recently changed password! Please log in again.", 401)
     );
   }
 
@@ -133,7 +133,6 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   next();
 });
-
 
 exports.isLoggedIn = async (req, res, next) => {
   try {
@@ -148,7 +147,7 @@ exports.isLoggedIn = async (req, res, next) => {
       // 3) Controlla se l'utente esiste ancora
       const currentUser = await User.findById(decoded.id);
       if (!currentUser || currentUser.changedPasswordAfter(decoded.iat)) {
-        req.user = { role: 'user' }; // Utente non trovato o token scaduto
+        req.user = { role: "user" }; // Utente non trovato o token scaduto
         return next();
       }
 
@@ -159,11 +158,11 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 
     // Se non c'è il token
-    req.user = { role: 'user' };
+    req.user = { role: "user" };
     return next();
   } catch (err) {
     // In caso di errore (es. token non valido)
-    req.user = { role: 'user' };
+    req.user = { role: "user" };
     return next();
   }
 };
@@ -193,7 +192,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   });
   //3) send it to user's email
   const resetURL = `${req.protocol}://${req.get(
-    "host",
+    "host"
   )}/api/v1/users/resetPassword/${resetToken}`;
 
   const message = `forgot your password? submit new password to ${resetURL}.\n if you did not forget the password, please ignore this email`;

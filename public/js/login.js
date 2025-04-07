@@ -25,32 +25,30 @@ export const login = async (email, password) => {
     console.log("error", err.response.data.message);
   }
 };
-export const logout = async()=>{
-try {
-  const res = await axios({
-    method:'GET',
-    url: "http://localhost:7000/api/v1/users/logout",
-    headers:{
-      'Content-Type':null,
-    }
-  })
+export const logout = async () => {
+  try {
+    const res = await axios.get("http://localhost:3000/api/v1/users/logout", {
+      withCredentials: true
+    });
+
     if (res.data.status === "success") {
-      window.setTimeout(() => {
-        location.reload(true);
-        console.log("evvai");
-      }, 4500);
+      console.log("Logout success");
+      setTimeout(() => {
+        location.reload();
+      }, 1000);
     }
   } catch (err) {
-    console.log("error", err.response);
+    console.error("Logout error", err);
   }
-}
+};
+
 
 
 export const forgotPassword = async (email) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "http://localhost:7000/api/v1/users/forgot-password",
+      url: "http://localhost:3000/api/v1/users/forgot-password",
 
       data: {
         email,
@@ -77,7 +75,7 @@ export const resetPassword = async (password, passwordConfirm) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url:`http://localhost:7000/api/v1/users/resetPassword/${token}` ,
+      url:`http://localhost:3000/api/v1/users/resetPassword/${token}` ,
       data: {
 	      password,
 	      passwordConfirm
@@ -102,7 +100,7 @@ export const updateUser = async (name,email) => {
   try {
     const res = await axios({
       method: "PATCH",
-      url:`http://localhost:7000/api/v1/users/updateMe` ,
+      url:`http://localhost:3000/api/v1/users/updateMe` ,
       data: {
         name,
         email,
@@ -126,7 +124,7 @@ export const updatePassword = async (passwordCurrent, password,passwordConfirm) 
   try {
     const res = await axios({
       method: "PATCH",
-      url:`http://localhost:7000/api/v1/users/updatePassword` ,
+      url:`http://localhost:3000/api/v1/users/updatePassword` ,
       data: {
         passwordCurrent,
 	      password,

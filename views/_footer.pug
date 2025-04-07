@@ -7,8 +7,8 @@ footer
 
       a(href="https://www.mattiayaghmai.com/") My Portfolio 
 
-  -if(user)
-  .form-groupHeader.buttonsAccept.flex.flex-column
-    button(class='buttonLogout') 
-      a.logoutButton Logout
-  -console.log(user)
+  -if( user && user.role === 'writer' || user.role === 'admin')
+    .form-groupHeader.buttonsAccept.flex.flex-column
+      button(class='buttonLogout logoutButton') 
+        a.logoutButton Logout
+    -console.log(user)

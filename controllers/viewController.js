@@ -14,7 +14,26 @@ exports.getOverview = catchAsync(async (req, res,next) => {
     articles,
     user
   });
+  console.log(user);
 });
+exports.get404Page = catchAsync(async (req, res, next) => {	
+const user = req.user;
+  res.status(200).render("notFound", {
+    title: "Altro | Not Found",
+    user,
+  });
+  console.log(user);
+  
+ })
+ exports.getArticlePage = catchAsync(async (req, res, next) => {
+  const articles = await Articles.find();
+  const user = req.user  ;
+  res.status(200).render("articlesPage", {
+    title: "Altro | Articles",
+    articles,
+    user
+  });
+ });
 exports.getArticle = catchAsync(async (req, res, next) => {
   const article = await Articles.findOne({ slug: req.params.slug });
   const user = req.user  ;
@@ -27,6 +46,18 @@ exports.getArticle = catchAsync(async (req, res, next) => {
     user
   });
 });
+exports.getCategory = catchAsync(async (req, res, next) => {
+  const article = await Articles.find({ category: req.params.category });
+  const user = req.user  ;
+  if (!article) {
+    return next(new AppError("there is no such article with that name"), 404);
+  }
+  res.status(200).render("category", {
+    title: req.params.category,
+    article,
+    user
+  });
+})
 exports.getPasswordForgot = catchAsync(async (req,res,next)=>{
 	res.status(200).render('forgotPassword', {
 		title:'Forgot Your Password'

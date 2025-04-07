@@ -14,8 +14,8 @@ import {
 import { submitNewArticleJs } from "./newArticle.js";
 import { editPage } from "./editArticle.js";
 import { deleteThisArticle } from "./deleteArticle.js";
-import { navSticky} from "./navInteraction.js"
-import {navSizes} from "./navScreenSize.js"
+import { navSticky } from "./navInteraction.js";
+import { navSizes } from "./navScreenSize.js";
 ///////////////                    ///////////////
 /////////////////////// HTML ELEMENTS ///////////////////////
 //////////////                    ///////////////
@@ -36,18 +36,16 @@ let article = document.getElementById("article");
 let authorName = document.getElementById("authorName");
 let imageCaption = document.getElementById("imageCaption");
 let subheading = document.getElementById("subheading");
-const nav = document.querySelector('nav')
+const nav = document.querySelector("nav");
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (nav) {
-        console.log('ciao');
-        navSticky()
-        navSizes()
-    }
-    else
-    {
-    console.log('yo')  
-    }
+document.addEventListener("DOMContentLoaded", () => {
+  if (nav) {
+    console.log("ciao");
+    navSticky();
+    navSizes();
+  } else {
+    console.log("yo");
+  }
 });
 ///////////////                    ///////////////
 /////////////////////// ACTIONS IMPLEMENTATIONS ///////////////////////
@@ -78,7 +76,11 @@ if (newArticleForm)
     submitNewArticleJs(form);
   });
 //////LOG OUT
-if (logoutButton) logoutButton.addEventListener("click", logout);
+if (logoutButton)
+  logoutButton.addEventListener("click", () => {
+    logout();
+    console.log("logout");
+  });
 /////// EDIT ARTICLE
 if (editArticle)
   editArticle.addEventListener("submit", (e) => {
@@ -112,7 +114,7 @@ if (resetPasswordform)
     e.preventDefault();
     const passwordReset = document.getElementById("passwordReset").value;
     const passwordConfirmReset = document.getElementById(
-      "passwordConfirmReset",
+      "passwordConfirmReset"
     ).value;
     resetPassword(passwordReset, passwordConfirmReset);
   });

@@ -11098,27 +11098,23 @@ var logout = exports.logout = /*#__PURE__*/function () {
         case 0:
           _context2.prev = 0;
           _context2.next = 3;
-          return (0, _axios.default)({
-            method: 'GET',
-            url: "http://localhost:7000/api/v1/users/logout",
-            headers: {
-              'Content-Type': null
-            }
+          return _axios.default.get("http://localhost:3000/api/v1/users/logout", {
+            withCredentials: true
           });
         case 3:
           res = _context2.sent;
           if (res.data.status === "success") {
-            window.setTimeout(function () {
-              location.reload(true);
-              console.log("evvai");
-            }, 4500);
+            console.log("Logout success");
+            setTimeout(function () {
+              location.reload();
+            }, 1000);
           }
           _context2.next = 10;
           break;
         case 7:
           _context2.prev = 7;
           _context2.t0 = _context2["catch"](0);
-          console.log("error", _context2.t0.response);
+          console.error("Logout error", _context2.t0);
         case 10:
         case "end":
           return _context2.stop();
@@ -11139,7 +11135,7 @@ var forgotPassword = exports.forgotPassword = /*#__PURE__*/function () {
           _context3.next = 3;
           return (0, _axios.default)({
             method: "POST",
-            url: "http://localhost:7000/api/v1/users/forgot-password",
+            url: "http://localhost:3000/api/v1/users/forgot-password",
             data: {
               email: email
             },
@@ -11184,7 +11180,7 @@ var resetPassword = exports.resetPassword = /*#__PURE__*/function () {
           _context4.next = 3;
           return (0, _axios.default)({
             method: "PATCH",
-            url: "http://localhost:7000/api/v1/users/resetPassword/".concat(token),
+            url: "http://localhost:3000/api/v1/users/resetPassword/".concat(token),
             data: {
               password: password,
               passwordConfirm: passwordConfirm
@@ -11227,7 +11223,7 @@ var updateUser = exports.updateUser = /*#__PURE__*/function () {
           _context5.next = 3;
           return (0, _axios.default)({
             method: "PATCH",
-            url: "http://localhost:7000/api/v1/users/updateMe",
+            url: "http://localhost:3000/api/v1/users/updateMe",
             data: {
               name: name,
               email: email
@@ -11270,7 +11266,7 @@ var updatePassword = exports.updatePassword = /*#__PURE__*/function () {
           _context6.next = 3;
           return (0, _axios.default)({
             method: "PATCH",
-            url: "http://localhost:7000/api/v1/users/updatePassword",
+            url: "http://localhost:3000/api/v1/users/updatePassword",
             data: {
               passwordCurrent: passwordCurrent,
               password: password,
@@ -11806,14 +11802,14 @@ var article = document.getElementById("article");
 var authorName = document.getElementById("authorName");
 var imageCaption = document.getElementById("imageCaption");
 var subheading = document.getElementById("subheading");
-var nav = document.querySelector('nav');
-document.addEventListener('DOMContentLoaded', function () {
+var nav = document.querySelector("nav");
+document.addEventListener("DOMContentLoaded", function () {
   if (nav) {
-    console.log('ciao');
+    console.log("ciao");
     (0, _navInteraction.navSticky)();
     (0, _navScreenSize.navSizes)();
   } else {
-    console.log('yo');
+    console.log("yo");
   }
 });
 ///////////////                    ///////////////
@@ -11843,7 +11839,10 @@ if (newArticleForm) newArticleForm.addEventListener("submit", function (e) {
   (0, _newArticle.submitNewArticleJs)(form);
 });
 //////LOG OUT
-if (logoutButton) logoutButton.addEventListener("click", _login.logout);
+if (logoutButton) logoutButton.addEventListener("click", function () {
+  (0, _login.logout)();
+  console.log("logout");
+});
 /////// EDIT ARTICLE
 if (editArticle) editArticle.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -11917,7 +11916,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58522" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65302" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

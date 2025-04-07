@@ -1,0 +1,16 @@
+extends base
+
+block content
+	section.SecondPageArticleLists.flex.Articles
+		.marginControl.flex
+			h1.titleSections.titleSectionsCategoryPage= article[0].category 
+			.articleCollectionCentered.grid.col-4
+				- for (let i = 0; i < article.length; i++)
+					a(href=`/article/${article[i].category}/${article[i].slug}`) 
+						.containerArticleCollection.flex.flex-column
+							.containerPictureSecondSectionHome
+								.pictureInsideSecondSection
+									img.imgMain(src=`/img/${article[i].imageCover}`)
+							.containerTextS2
+								h2.titleArticleCollection= article[i].title  
+								p.homePageParagraph= article[i].createdAt

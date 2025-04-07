@@ -8,7 +8,8 @@ block content
                     h1(id='titleArticle')= article.title 
                     h2(id='subheadingArticle')= article.subheading
                 .containerCategoryArticle 
-                    span= article.category
+                    a(href=`/articles/${article.category}`) 
+                        span= article.category
                 .containerAuthorArticle 
                     p.authorArticleName  #{article.authorName}
                     .articleCreatedAt= article.createdAt
