@@ -145,6 +145,12 @@ a:hover {
   font-weight: 200;
   font-style: normal;
 }
+.minHeight{
+  height: 100vh;
+}
+.alignCenter{
+  align-items: center;
+}
 .flex {
   display: flex;
   gap: var(--gap, 1rem);
@@ -785,7 +791,8 @@ footer {
   font-size: var(--font-size-p-sm);
   background-color: #333;
   color: #fff;
-  position: relative;
+  /* position: relative; */
+  width: 100%;
   margin-top: 3rem;
   height: 30rem;
 }

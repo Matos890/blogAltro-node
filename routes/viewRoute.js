@@ -19,6 +19,12 @@ router.get(
   viewController.getCategory
 );
 router.get(
+  "/interactive",
+
+  authController.isLoggedIn,
+  viewController.getInteractivePage
+);
+router.get(
   "/articles/",
 
   authController.isLoggedIn,

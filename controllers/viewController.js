@@ -25,6 +25,16 @@ const user = req.user;
   console.log(user);
   
  })
+ exports.getInteractivePage = catchAsync(async (req, res, next) => {
+
+const user = req.user;
+  res.status(200).render("interactivePages", {
+    title: "Altro | Interactive",
+    user,
+  });
+  console.log(user);
+
+})
  exports.getArticlePage = catchAsync(async (req, res, next) => {
   const articles = await Articles.find();
   const user = req.user  ;
