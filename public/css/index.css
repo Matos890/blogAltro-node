@@ -145,10 +145,10 @@ a:hover {
   font-weight: 200;
   font-style: normal;
 }
-.minHeight{
+.minHeight {
   height: 100vh;
 }
-.alignCenter{
+.alignCenter {
   align-items: center;
 }
 .flex {
@@ -1171,6 +1171,7 @@ option:hover {
     flex-direction: column;
     align-items: center;
     padding-top: 3%;
+    max-width: 800px;
   }
 
   .grid {
@@ -1262,6 +1263,9 @@ option:hover {
   h2 {
     font-size: var(--font-size-h2-home-md);
   }
+  /* .contentWrapperNav{
+    max-width: 800rem;
+  } */
   #subheadingArticle {
     font-size: var(--font-size-p-artcle-md);
   }
@@ -1433,6 +1437,9 @@ option:hover {
     margin-left: 85%;
     margin-right: 10rem;
   }
+  .contentWrapperNav {
+    max-width: 130rem;
+  }
   .buttonSignUp,
   .buttonLogout {
     width: 10rem;
@@ -1507,6 +1514,36 @@ option:hover {
   }
   .contentInnerWrapper {
     margin-top: 6rem;
+  }
+  .contentWrapperNav {
+    max-width: 130rem;
+  }
+  main{
+    position: relative;
+  }
+  main::after {
+content: " ";
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.15);
+        display: block;
+        top: 0;
+        right: 400px;
+        width: 1px;
+        height: 95%;
+        z-index: -1;
+    
+  }
+  main::before {
+content: " ";
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.15);
+        display: block;
+        top: 0;
+        left: 400px;
+        width: 1px;
+        height: 95%;
+        z-index: -1;
+    
   }
   .paragraphArticle > p:first-child::first-letter {
     font-size: 17.6rem;
@@ -1631,5 +1668,8 @@ option:hover {
   }
   .buttonsAcceptArticle {
     grid-column: 2;
+  }
+  .SecondPageArticleLists {
+    width: 130rem;
   }
 }
